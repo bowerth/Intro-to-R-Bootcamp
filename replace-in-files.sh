@@ -4,29 +4,25 @@
 
 path="$HOME/Dropbox/Programming/R/Intro-to-R-Bootcamp/work"
 
-# search_1="images\/"
-# replace_1="..\/images\/"
+# test whitespace
+# search_1="Brad Boehmke"
+# replace_1="Bo Werth"
+# echo AA Brad Boehmke BB | sed 's/'$search_1'/'$replace_1'/g'
 
-# search_2="uc_logo2.png"
-# replace_2="oecd_logo2.png"
+search_1=" images\/"
+replace_1=" ..\/images\/"
 
-# search_3=" data\/"
-# replace_3=" ..\/data\/"
+search_2="uc_logo2.png"
+replace_2="oecd_logo2.png"
 
-search_1="Brad"
-replace_1="Bo"
+search_3=" data\/"
+replace_3=" ..\/data\/"
 
-search_2="Boehmke"
-replace_2="Werth"
+search_4="Brad Boehmke, Ph.D."
+replace_4="Bo Werth, FAO ESS"
 
-search_3="Ph.D."
-replace_3="FAO"
-
-search_3="Ph.D."
-replace_3="FAO"
-
-search_4="bradleyboehmke"
-replace_4="bowerth"
+search_5="bradleyboehmke"
+replace_5="bowerth"
 
 # search_date="2015-08-08"
 # replace_date="2015-12-16"
@@ -34,15 +30,16 @@ replace_4="bowerth"
 # replace_date=""
 
 cd $path
-# FILES=test.Rmd
+FILES=test.Rmd
 # FILES=$(find . -maxdepth 1 -type f)
-FILES=$(find *.Rmd -maxdepth 1 -type f)
+# FILES=$(find *.Rmd -maxdepth 1 -type f)
 # echo $FILES
 
 for file in $FILES
 do
     # sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g' $path/${file} > $path/${file}.tmp
-    sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g;s/'$search_3'/'$replace_3'/g;s/'$search_4'/'$replace_4'/g' $path/${file} > $path/${file}.tmp
+    # sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g;s/'$search_3'/'$replace_3'/g;s/'$search_4'/'$replace_4'/g' $path/${file} > $path/${file}.tmp
+    sed "s/$search_1/$replace_1/g;s/$search_2/$replace_2/g;s/$search_3/$replace_3/g;s/$search_4/$replace_4/g;s/$search_5/$replace_5/g" $path/${file} > $path/${file}.tmp
     rm $path/${file}
     mv $path/${file}.tmp $path/${file}
     echo "replaced strings in file ${file}"

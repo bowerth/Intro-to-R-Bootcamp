@@ -13,16 +13,16 @@ output:
 
 # Introduction 
 
-## <a href="http://bradleyboehmke.github.io/"> <img src="../images/me.png"> </a>
+## <a href="http://bowerth.github.io/"> <img src="../images/me.png"> </a>
 ### About Me
 
 
 - U.S. Air Force - Operations Research Analyst
 - Air Force Institute of Technology - Assistant Professor
 - University of Cincinnati - Adjunct Assistant Professor
-- Website: <a href="http://bradleyboehmke.github.io">bradleyboehmke.github.io</a>
-- Twitter: <a href="https://twitter.com/bradleyboehmke">@bradleyboehmke</a>
-- Code: <a href="https://github.com/bradleyboehmke">GitHub</a>
+- Website: <a href="http://bowerth.github.io">bowerth.github.io</a>
+- Twitter: <a href="https://twitter.com/bowerth">@bowerth</a>
+- Code: <a href="https://github.com/bowerth">GitHub</a>
 
 ## Short Course Information
 

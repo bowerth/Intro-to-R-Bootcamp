@@ -235,7 +235,7 @@ View(data_gov)
 </font>
 
 <font size="5">
-`https://bradleyboehmke.github.io/public/../data/reddit.csv`
+`https://bowerth.github.io/public/../data/reddit.csv`
 </font>
 
 <br>

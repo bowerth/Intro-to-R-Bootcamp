@@ -281,7 +281,7 @@ View(data_gov)
 </font>
 
 <font size="5">
-`https://bradleyboehmke.github.io/public/../data/reddit.csv`
+`https://bowerth.github.io/public/../data/reddit.csv`
 </font>
 
 <br>
@@ -300,11 +300,11 @@ View(data_gov)
 <br>
 <br>
 
-`1.` Download the file stored at: bradleyboehmke.github.io/public/../data/reddit.csv
+`1.` Download the file stored at: bowerth.github.io/public/../data/reddit.csv
 
 `2.` Save it as an object titled `reddit`
 ```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
-url <- "https://bradleyboehmke.github.io/public/../data/reddit.csv"
+url <- "https://bowerth.github.io/public/../data/reddit.csv"
 
 reddit <- read.csv(url)
 ```

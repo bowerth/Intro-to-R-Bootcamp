@@ -604,7 +604,7 @@ summary(facebook)
 
 ## Your Turn
 
-<font size="6">1. **Import** the `reddit` data located at<br><br> &nbsp;&nbsp;&nbsp;&nbsp;[https://bradleyboehmke.github.io/public/../data/reddit.csv](https://bradleyboehmke.github.io/public/../data/reddit.csv)</font><br><br><br>
+<font size="6">1. **Import** the `reddit` data located at<br><br> &nbsp;&nbsp;&nbsp;&nbsp;[https://bowerth.github.io/public/../data/reddit.csv](https://bowerth.github.io/public/../data/reddit.csv)</font><br><br><br>
 <font size="6">2. What variables (column **names**) does this data frame contain?</font><br><br><br>
 <font size="6">3. How many users have the **employment status** of "Student"?</font><br><br><br>
 <font size="6">4. **Subset** the `reddit` data frame for only those individuals that<br>&nbsp;&nbsp;&nbsp;&nbsp;are students.</font>
@@ -612,8 +612,8 @@ summary(facebook)
 ## Solution
 
 ```{r, collapse=TRUE, eval=FALSE}
-# 1. Import the reddit data located at https://bradleyboehmke.github.io/public/../data/reddit.csv
-url <- "https://bradleyboehmke.github.io/public/../data/reddit.csv"
+# 1. Import the reddit data located at https://bowerth.github.io/public/../data/reddit.csv
+url <- "https://bowerth.github.io/public/../data/reddit.csv"
 reddit <- read.csv(url)
 
 # 2. What variables (column names) does this data frame contain?
