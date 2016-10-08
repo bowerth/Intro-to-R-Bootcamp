@@ -4,14 +4,17 @@
 
 path="$HOME/Dropbox/Programming/R/Intro-to-R-Bootcamp/work"
 
-search_1="images\/"
-replace_1="..\/images\/"
+search_1=" images\/"
+replace_1=" ..\/images\/"
 
 search_2="uc_logo2.png"
 replace_2="oecd_logo2.png"
 
-search_3="data\/"
-replace_3="..\/data\/"
+search_3=" data\/"
+replace_3=" ..\/data\/"
+
+search_4="Brad Boehmke, Ph.D."
+replace_4="Bo Werth, FAO ESS"
 
 # search_date="2015-08-08"
 # replace_date="2015-12-16"
@@ -27,7 +30,7 @@ FILES=$(find *.Rmd -maxdepth 1 -type f)
 for file in $FILES
 do
     # sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g' $path/${file} > $path/${file}.tmp
-    sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g;s/'$search_3'/'$replace_3'/g' $path/${file} > $path/${file}.tmp
+    sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g;s/'$search_3'/'$replace_3'/g;s/'$search_4'/'$replace_4'/g' $path/${file} > $path/${file}.tmp
     rm $path/${file}
     mv $path/${file}.tmp $path/${file}
     echo "replaced strings in file ${file}"

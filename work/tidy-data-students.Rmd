@@ -70,7 +70,12 @@ Is this data tidy?
 <br>
 
 ```{r, collapse=FALSE, echo=FALSE}
-read.csv("~/Desktop/Personal/Education & Training/Personal Analyses/Cost per H.S. Graduate/graduates.csv")
+read.delim(
+  file = "../data/pew.txt",
+  header = TRUE,
+  stringsAsFactors = FALSE,
+  check.names = F
+)
 ```
 
 ## Tidy Data
@@ -82,7 +87,11 @@ Is this data tidy?
 <br>
 
 ```{r, collapse=FALSE, echo=FALSE}
-read.csv("~/Desktop/Personal/Education & Training/Personal Analyses/Race_and_education/SeriesReport-20150124160350.csv")
+read.csv(
+  file = "../data/tb.csv",
+  header = TRUE, 
+  stringsAsFactors = FALSE
+)[1:10,1:10]
 ```
 
 ## Tidy Data
