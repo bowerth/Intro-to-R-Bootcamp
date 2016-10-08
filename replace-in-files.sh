@@ -13,8 +13,14 @@ path="$HOME/Dropbox/Programming/R/Intro-to-R-Bootcamp/work"
 # search_3=" data\/"
 # replace_3=" ..\/data\/"
 
-search_1="Brad\sBoehmke"
-replace_1="Bo Werth"
+search_1="Brad"
+replace_1="Bo"
+
+search_2="Boehmke"
+replace_2="Werth"
+
+search_3="Ph\.D\."
+replace_3="FAO ESS"
 
 # search_date="2015-08-08"
 # replace_date="2015-12-16"
