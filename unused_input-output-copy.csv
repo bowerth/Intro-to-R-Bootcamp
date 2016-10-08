@@ -1,0 +1,9 @@
+inputname,outputname,jekylldir
+R-Bootcamp,1-intro,introduction
+get-data,2-get-data,gettingdata
+3-data-structures,3-data-structures,datastructures
+4-data-types,4-data-types,datatypes
+tidy-data,5-tidy-data,tidy
+dplyr-data,6-dplyr-data,dplyr
+7-quickplots,7-quickplots-teacher,quickplots
+8-ggplot,8-ggplot-teacher,ggplot
