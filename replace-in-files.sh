@@ -22,9 +22,9 @@ replace_4="Bo Werth, FAO ESS"
 # replace_date=""
 
 cd $path
-# FILES=test2.Rmd
+FILES=test.Rmd
 # FILES=$(find . -maxdepth 1 -type f)
-FILES=$(find *.Rmd -maxdepth 1 -type f)
+# FILES=$(find *.Rmd -maxdepth 1 -type f)
 # echo $FILES
 
 for file in $FILES
