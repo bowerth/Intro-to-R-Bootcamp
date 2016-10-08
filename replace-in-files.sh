@@ -19,8 +19,8 @@ replace_1="Bo"
 search_2="Boehmke"
 replace_2="Werth"
 
-search_3="Ph\.D\."
-replace_3="FAO ESS"
+search_3="Ph.D."
+replace_3="FAO"
 
 # search_date="2015-08-08"
 # replace_date="2015-12-16"
