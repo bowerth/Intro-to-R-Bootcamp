@@ -39,8 +39,9 @@ for file in $FILES
 do
     # sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g' $path/${file} > $path/${file}.tmp
     # sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g;s/'$search_3'/'$replace_3'/g;s/'$search_4'/'$replace_4'/g' $path/${file} > $path/${file}.tmp
-    sed "s/$search_1/$replace_1/g;s/$search_2/$replace_2/g;s/$search_3/$replace_3/g;s/$search_4/$replace_4/g;s/$search_5/$replace_5/g" $path/${file} > $path/${file}.tmp
-    rm $path/${file}
-    mv $path/${file}.tmp $path/${file}
+    # sed "s/$search_1/$replace_1/g;s/$search_2/$replace_2/g;s/$search_3/$replace_3/g;s/$search_4/$replace_4/g;s/$search_5/$replace_5/g" $path/${file} > $path/${file}.tmp
+    # rm $path/${file}
+    # mv $path/${file}.tmp $path/${file}
+    sed -i -e "s/$search_1/$replace_1/g" -e "s/$search_2/$replace_2/g;s/$search_3/$replace_3/g;s/$search_4/$replace_4/g;s/$search_5/$replace_5/g" $path/${file}
     echo "replaced strings in file ${file}"
 done
