@@ -28,9 +28,9 @@ replace_3="FAO"
 # replace_date=""
 
 cd $path
-FILES=test.Rmd
+# FILES=test.Rmd
 # FILES=$(find . -maxdepth 1 -type f)
-# FILES=$(find *.Rmd -maxdepth 1 -type f)
+FILES=$(find *.Rmd -maxdepth 1 -type f)
 # echo $FILES
 
 for file in $FILES
