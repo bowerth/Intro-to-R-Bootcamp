@@ -4,8 +4,8 @@
 
 path="$HOME/Dropbox/Programming/R/Intro-to-R-Bootcamp/work"
 
-search_1="images\/"
-replace_1="..\/images\/"
+# search_1="images\/"
+# replace_1="..\/images\/"
 
 # search_2="uc_logo2.png"
 # replace_2="oecd_logo2.png"
@@ -13,8 +13,8 @@ replace_1="..\/images\/"
 # search_3=" data\/"
 # replace_3=" ..\/data\/"
 
-# search_1="Brad Boehmke"
-# replace_1="Bo Werth"
+search_1="Brad\sBoehmke"
+replace_1="Bo\sWerth"
 
 # search_date="2015-08-08"
 # replace_date="2015-12-16"
