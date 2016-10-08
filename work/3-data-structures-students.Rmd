@@ -2,6 +2,7 @@
 title: "R Programming"
 subtitle: "I need structure!"
 author: | 
+  | Brad Boehmke, Ph.D.
 output: 
   ioslides_presentation:
     logo: ../images/oecd_logo2.png
