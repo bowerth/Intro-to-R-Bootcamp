@@ -5,7 +5,7 @@ author: |
   | Brad Boehmke, Ph.D.
 output: 
   ioslides_presentation:
-    logo: images/uc_logo2.png
+    logo: ../images/oecd_logo2.png
     widescreen: true
     smaller: true
     transition: 0.01
@@ -20,7 +20,7 @@ output:
 <br>
 
 <center>
-<img src="images/quickplots_icon2.png" width="60%" height="60%"/>
+<img src="../images/quickplots_icon2.png" width="60%" height="60%"/>
 </center>
 
 ## What to Remember from this Section
@@ -126,7 +126,7 @@ stripchart(facebook$tenure, pch = 16)
 ```
 
 ```{r, echo=FALSE, cache=TRUE}
-facebook <- read.delim("data/facebook.tsv")
+facebook <- read.delim("../data/facebook.tsv")
 ```
 
 ```{r, echo=FALSE, fig.align='center', fig.height=3, fig.width=8, warning=FALSE, message=FALSE}
@@ -237,7 +237,7 @@ Visually assess the continuous variables. What do you find?
 ## Categorical Variables: Bar Chart
 
 ```{r, collapse=TRUE, fig.align='center', fig.height=4, fig.width=5}
-reddit <- read.csv("data/reddit.csv")
+reddit <- read.csv("../data/reddit.csv")
 
 table(reddit$dog.cat)
 
@@ -347,7 +347,7 @@ plot(x = race$Black_unemployment, y = race$black_college, pch = 16, col = "blue"
 
 
 ```{r, echo=FALSE, fig.align='center', fig.height=5, fig.width=10}
-race <- read.csv("data/race-comparison.csv")
+race <- read.csv("../data/race-comparison.csv")
 
 par(mfrow = c(1, 2))
 plot(x = race$White_unemployment, y = race$Black_unemployment, pch = 16, col = "blue")
@@ -427,7 +427,7 @@ legend("topleft", legend = c("HS Rate", "College Rate", "Unemployment"),
 
 ```{r, eval=FALSE}
 library(readxl)
-supermarket <- read_excel("data/Supermarket Transactions.xlsx", sheet = "Data")
+supermarket <- read_excel("../data/Supermarket Transactions.xlsx", sheet = "Data")
 
 boxplot(supermarket$Revenue)
 boxplot(Revenue ~ Gender, data = supermarket)
@@ -436,7 +436,7 @@ boxplot(Revenue ~ Gender + `Marital Status`, data = supermarket)
 
 ```{r, echo=FALSE, fig.align='center', warning=FALSE, message=FALSE, fig.height=4, fig.width=10}
 library(readxl)
-supermarket <- read_excel("data/Supermarket Transactions.xlsx", sheet = "Data")
+supermarket <- read_excel("../data/Supermarket Transactions.xlsx", sheet = "Data")
 par(mfrow = c(1, 3))
 boxplot(supermarket$Revenue)
 boxplot(Revenue ~ Gender, data = supermarket)

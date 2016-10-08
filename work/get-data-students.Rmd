@@ -5,7 +5,7 @@ author: |
   | Brad Boehmke, Ph.D.
 output: 
   ioslides_presentation:
-    logo: images/uc_logo2.png
+    logo: ../images/oecd_logo2.png
     widescreen: true
     smaller: true
     transition: 0.01
@@ -94,13 +94,13 @@ state.region
 
 Use `read.csv` for comma separated files (automatically sets the `sep = ","`)
 ```{r, collapse=TRUE, warning=FALSE}
-read.csv("data/mydata.csv")
+read.csv("../data/mydata.csv")
 ```
 <br>
 
 Use `read.delim` for tab delimited files (automatically sets the `sep = "\t"`)
 ```{r, collapse=TRUE, warning=FALSE}
-read.delim("data/mydata.txt")
+read.delim("../data/mydata.txt")
 ```
 
 ## Importing Text Files | Base R
@@ -108,7 +108,7 @@ read.delim("data/mydata.txt")
 When importing data, save to a file by using the assignment operator:
 
 ```{r, collapse=TRUE, warning=FALSE}
-mydata <- read.delim("data/mydata.tsv")
+mydata <- read.delim("../data/mydata.tsv")
 
 mydata
 ```
@@ -158,7 +158,7 @@ mydata
 
 library(readxl)
 
-read_excel("data/mydata.xlsx", sheet = "Sheet5")
+read_excel("../data/mydata.xlsx", sheet = "Sheet5")
 ```
 
 - Benefits of `readxl`
@@ -235,7 +235,7 @@ View(data_gov)
 </font>
 
 <font size="5">
-`https://bradleyboehmke.github.io/public/data/reddit.csv`
+`https://bradleyboehmke.github.io/public/../data/reddit.csv`
 </font>
 
 <br>

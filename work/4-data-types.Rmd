@@ -5,7 +5,7 @@ author: |
   | Brad Boehmke, Ph.D.
 output: 
   ioslides_presentation:
-    logo: images/uc_logo2.png
+    logo: ../images/oecd_logo2.png
     widescreen: true
     smaller: true
     transition: 0.01
@@ -117,7 +117,7 @@ Import the `numbers-your-turn.csv` file in the data folder
 
 ```{r, collapse=TRUE}
 # import the numbers-your-turn.csv file in the data folder
-df <- read.csv("data/numbers-your-turn.csv")
+df <- read.csv("../data/numbers-your-turn.csv")
 
 # 1. Are the vectors x & y equal? Exactly or approximately equal?
 identical(df$x, df$y)
@@ -305,7 +305,7 @@ ordered(age.range, levels = c("Under 18", "18-24", "25-34", "35-44", "45-54", "5
 If you want to know the levels that exist in your factor variable use `levels()`
 
 ```{r, collapse=TRUE}
-facebook <- read.delim("data/facebook.tsv")
+facebook <- read.delim("../data/facebook.tsv")
 
 levels(facebook$gender)
 ```
@@ -335,7 +335,7 @@ Import the `reddit.csv` file in the data folder
 
 ```{r, collapse=TRUE}
 # import the reddit.csv file in the data folder
-reddit <- read.csv("data/reddit.csv")
+reddit <- read.csv("../data/reddit.csv")
 
 # 1. What are the levels for the `income.range` variable?
 levels(reddit$income.range)
@@ -502,7 +502,7 @@ Import the `facebook.tsv` file in the data folder
 
 ```{r, collapse=TRUE}
 # Import the `facebook.tsv` file in the data folder
-facebook <- read.delim("data/facebook.tsv")
+facebook <- read.delim("../data/facebook.tsv")
 
 # 1. Create a new date variable that combines the dob_day, dob_month, & dob_year variables.
 facebook$dob <- as.Date(ISOdate(year = facebook$dob_year, 

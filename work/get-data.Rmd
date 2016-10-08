@@ -5,7 +5,7 @@ author: |
   | Brad Boehmke, Ph.D.
 output: 
   ioslides_presentation:
-    logo: images/uc_logo2.png
+    logo: ../images/oecd_logo2.png
     widescreen: true
     smaller: true
     transition: 0.01
@@ -110,13 +110,13 @@ Description from the help screen: "This famous (Fisher's or Anderson's) iris dat
 
 Use `read.csv` for comma separated files (automatically sets the `sep = ","`)
 ```{r, cache=TRUE, collapse=TRUE, warning=FALSE}
-read.csv("data/mydata.csv")
+read.csv("../data/mydata.csv")
 ```
 <br>
 
 Use `read.delim` for tab delimited files (automatically sets the `sep = "\t"`)
 ```{r, cache=TRUE, collapse=TRUE, warning=FALSE}
-read.delim("data/mydata.txt")
+read.delim("../data/mydata.txt")
 ```
 
 ## Importing Text Files | Base R
@@ -124,7 +124,7 @@ read.delim("data/mydata.txt")
 When importing data, save to a file by using the assignment operator:
 
 ```{r, cache=TRUE, collapse=TRUE, warning=FALSE}
-mydata <- read.delim("data/mydata.tsv")
+mydata <- read.delim("../data/mydata.tsv")
 
 mydata
 ```
@@ -166,7 +166,7 @@ mydata
 
 `1` & `2`: Read in the `facebook.tsv` file and save as `facebook` 
 ```{r, collapse=TRUE, cache=TRUE}
-facebook <- read.delim("data/facebook.tsv")
+facebook <- read.delim("../data/facebook.tsv")
 ```
 
 <br>
@@ -190,7 +190,7 @@ View(facebook)
 
 library(readxl)
 
-read_excel("data/mydata.xlsx", sheet = "Sheet5")
+read_excel("../data/mydata.xlsx", sheet = "Sheet5")
 ```
 
 - Benefits of `readxl`
@@ -220,7 +220,7 @@ read_excel("data/mydata.xlsx", sheet = "Sheet5")
 
 `1` & `2`: Read in the `.xlsx` file and save as `pew` 
 ```{r, collapse=TRUE, cache=TRUE, warning=FALSE}
-pew <- read_excel("data/PEW Middle Class Data.xlsx", sheet = "3. Median HH income, metro", skip = 5)
+pew <- read_excel("../data/PEW Middle Class Data.xlsx", sheet = "3. Median HH income, metro", skip = 5)
 ```
 
 <br>
@@ -281,7 +281,7 @@ View(data_gov)
 </font>
 
 <font size="5">
-`https://bradleyboehmke.github.io/public/data/reddit.csv`
+`https://bradleyboehmke.github.io/public/../data/reddit.csv`
 </font>
 
 <br>
@@ -300,11 +300,11 @@ View(data_gov)
 <br>
 <br>
 
-`1.` Download the file stored at: bradleyboehmke.github.io/public/data/reddit.csv
+`1.` Download the file stored at: bradleyboehmke.github.io/public/../data/reddit.csv
 
 `2.` Save it as an object titled `reddit`
 ```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
-url <- "https://bradleyboehmke.github.io/public/data/reddit.csv"
+url <- "https://bradleyboehmke.github.io/public/../data/reddit.csv"
 
 reddit <- read.csv(url)
 ```

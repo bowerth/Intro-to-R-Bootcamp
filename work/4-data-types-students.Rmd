@@ -5,7 +5,7 @@ author: |
   | Brad Boehmke, Ph.D.
 output: 
   ioslides_presentation:
-    logo: images/uc_logo2.png
+    logo: ../images/oecd_logo2.png
     widescreen: true
     smaller: true
     transition: 0.01
@@ -279,7 +279,7 @@ ordered(age.range, levels = c("Under 18", "18-24", "25-34", "35-44", "45-54", "5
 If you want to know the levels that exist in your factor variable use `levels()`
 
 ```{r, collapse=TRUE}
-facebook <- read.delim("data/facebook.tsv")
+facebook <- read.delim("../data/facebook.tsv")
 
 levels(facebook$gender)
 ```

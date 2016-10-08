@@ -5,7 +5,7 @@ author: |
   | Brad Boehmke, Ph.D.
 output: 
   ioslides_presentation:
-    logo: images/uc_logo2.png
+    logo: ../images/oecd_logo2.png
     widescreen: true
     smaller: true
     transition: 0.01
@@ -13,7 +13,7 @@ output:
 
 # Introduction 
 
-## <a href="http://bradleyboehmke.github.io/"> <img src="images/me.png"> </a>
+## <a href="http://bradleyboehmke.github.io/"> <img src="../images/me.png"> </a>
 ### About Me
 
 
@@ -133,12 +133,12 @@ All required classroom material can be downloaded from the course website:
 
 ## Why R? | Built for Analytics!
 <center>
-<img src="images/analytic_process.png" style="width:75%;height:75%;">
+<img src="../images/analytic_process.png" style="width:75%;height:75%;">
 </center>
 
 ## Why R? | Built for Analytics!
 <center>
-<img src="images/analytic_process_get.png" style="width:75%;height:75%;">
+<img src="../images/analytic_process_get.png" style="width:75%;height:75%;">
 </center>
 
 <br><br>
@@ -150,7 +150,7 @@ All required classroom material can be downloaded from the course website:
 
 ## Why R? | Built for Analytics!
 <center>
-<img src="images/analytic_process_clean.png" style="width:75%;height:75%;">
+<img src="../images/analytic_process_clean.png" style="width:75%;height:75%;">
 </center>
 
 <br><br>
@@ -161,7 +161,7 @@ All required classroom material can be downloaded from the course website:
 
 ## Why R? | Built for Analytics!
 <center>
-<img src="images/analytic_process_transform.png" style="width:75%;height:75%;">
+<img src="../images/analytic_process_transform.png" style="width:75%;height:75%;">
 </center>
 
 <br><br>
@@ -172,7 +172,7 @@ All required classroom material can be downloaded from the course website:
 
 ## Why R? | Built for Analytics!
 <center>
-<img src="images/analytic_process_visualize.png" style="width:75%;height:75%;">
+<img src="../images/analytic_process_visualize.png" style="width:75%;height:75%;">
 </center>
 
 <br><br>
@@ -183,7 +183,7 @@ All required classroom material can be downloaded from the course website:
 
 ## Why R? | Built for Analytics!
 <center>
-<img src="images/analytic_process_model.png" style="width:75%;height:75%;">
+<img src="../images/analytic_process_model.png" style="width:75%;height:75%;">
 </center>
 
 <br><br>
@@ -194,7 +194,7 @@ All required classroom material can be downloaded from the course website:
 
 ## Why R? | Built for Analytics!
 <center>
-<img src="images/analytic_process_communicate.png" style="width:75%;height:75%;">
+<img src="../images/analytic_process_communicate.png" style="width:75%;height:75%;">
 </center>
 
 <br><br>
@@ -206,13 +206,13 @@ All required classroom material can be downloaded from the course website:
 ## Why R? | Great Community!
 
 <center>
-<img src="images/community.png" style="width:90%;height:90%;">
+<img src="../images/community.png" style="width:90%;height:90%;">
 </center>
 
 ## Why R? | Create Cool Stuff!
 
 <center>
-<img src="images/cool_stuff.png" style="width:90%;height:90%;">
+<img src="../images/cool_stuff.png" style="width:90%;height:90%;">
 </center>
 
 # Getting Started
@@ -241,7 +241,7 @@ All required classroom material can be downloaded from the course website:
 
 ## Understanding the Console
 
-<img src="images/RStudio_console.png" style="width:100%;height:100%;">
+<img src="../images/RStudio_console.png" style="width:100%;height:100%;">
 
 Thorough [tutorial regarding the RStudio console](http://dss.princeton.edu/training/RStudio101.pdf)
 

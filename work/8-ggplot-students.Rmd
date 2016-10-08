@@ -5,7 +5,7 @@ author: |
   | Brad Boehmke, Ph.D.
 output: 
   ioslides_presentation:
-    logo: images/uc_logo2.png
+    logo: ../images/oecd_logo2.png
     widescreen: true
     smaller: true
     transition: 0.01
@@ -18,7 +18,7 @@ output:
 
 
 <center>
-<img src="images/tufte_weather.png" width="100%" height="100%"/>
+<img src="../images/tufte_weather.png" width="100%" height="100%"/>
 </center>
 
 ## What to Remember from this Section
@@ -66,10 +66,10 @@ library(dplyr)
 Import the following data sets from the data folder
 
 ```{r, eval=TRUE}
-supermarket <- read_excel("data/Supermarket Transactions.xlsx", sheet = "Data")
-facebook <- read.delim("data/facebook.tsv")
-reddit <- read.csv("data/reddit.csv")
-race <- read.csv("data/race-comparison.csv")
+supermarket <- read_excel("../data/Supermarket Transactions.xlsx", sheet = "Data")
+facebook <- read.delim("../data/facebook.tsv")
+reddit <- read.csv("../data/reddit.csv")
+race <- read.csv("../data/race-comparison.csv")
 ```
 
 
