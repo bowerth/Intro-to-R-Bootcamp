@@ -2,7 +2,7 @@
 title: "R Programming"
 subtitle: "Get me some data!"
 author: | 
-  | Brad Boehmke, Ph.D.
+  | Bo Werth, FAO
 output: 
   ioslides_presentation:
     logo: ../images/oecd_logo2.png

@@ -2,7 +2,7 @@
 title: "R Programming"
 subtitle: "A tidy data set is a happy data set!"
 author: | 
-  | Brad Boehmke, Ph.D.
+  | Bo Werth, FAO
 output: 
   ioslides_presentation:
     logo: ../images/oecd_logo2.png

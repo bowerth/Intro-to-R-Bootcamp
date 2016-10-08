@@ -22,6 +22,12 @@ replace_2="Werth"
 search_3="Ph.D."
 replace_3="FAO"
 
+search_3="Ph.D."
+replace_3="FAO"
+
+search_4="bradleyboehmke"
+replace_4"bowerth"
+
 # search_date="2015-08-08"
 # replace_date="2015-12-16"
 # search_date="2015-12-16-"
@@ -36,7 +42,7 @@ FILES=$(find *.Rmd -maxdepth 1 -type f)
 for file in $FILES
 do
     # sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g' $path/${file} > $path/${file}.tmp
-    sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g;s/'$search_3'/'$replace_3'/g' $path/${file} > $path/${file}.tmp
+    sed 's/'$search_1'/'$replace_1'/g;s/'$search_2'/'$replace_2'/g;s/'$search_3'/'$replace_3'/g;s/'$search_3'/'$replace_3'/g' $path/${file} > $path/${file}.tmp
     rm $path/${file}
     mv $path/${file}.tmp $path/${file}
     echo "replaced strings in file ${file}"

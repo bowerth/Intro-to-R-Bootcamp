@@ -2,7 +2,7 @@
 title: "R Programming"
 subtitle: "Transforming & manipulating data made easy."
 author: | 
-  | Brad Boehmke, Ph.D.
+  | Bo Werth, FAO
 output: 
   ioslides_presentation:
     logo: ../images/oecd_logo2.png

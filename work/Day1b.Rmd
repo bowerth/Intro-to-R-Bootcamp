@@ -2,7 +2,7 @@
 title: "R Programming"
 subtitle: "I need structure!"
 author: | 
-  | Brad Boehmke, Ph.D.
+  | Bo Werth, FAO
 date: "August 6, 2016"
 output: 
   ioslides_presentation:
