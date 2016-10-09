@@ -236,7 +236,7 @@ View(pew)
 
 - Dense subject with *LOTS* to learn
 - We'll only focus on reading in tabular and Excel files stored online
-- For more info regarding "real web scraping" see the tutorial at: [uc-r.github.io/scraping](uc-r.github.io/scraping)
+- For more info regarding "real web scraping" see the tutorial at: [boot.rdata.work/scraping](boot.rdata.work/scraping)
 
 <br>
 

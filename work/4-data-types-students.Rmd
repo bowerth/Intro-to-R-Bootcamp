@@ -206,9 +206,9 @@ Characters are becoming a key form of data which organizations are increasingly 
 
 - Character manipulation (regex and text analysis) is a rich field; far more complex than we have time for
 - More opportunities to learn
-    - [Data Wrangling with R](http://uc-r.github.io/bana_datawrangling) class 
-    - [Dealing with Characters](http://uc-r.github.io/characters) tutorial
-    - [Dealing with Regular Expressions](http://uc-r.github.io/regex) tutorial
+    - [Data Wrangling with R](http://boot.rdata.work/bana_datawrangling) class 
+    - [Dealing with Characters](http://boot.rdata.work/characters) tutorial
+    - [Dealing with Regular Expressions](http://boot.rdata.work/regex) tutorial
 
 
 # Factors | aka categorical variables

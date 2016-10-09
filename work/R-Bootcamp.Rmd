@@ -11,18 +11,19 @@ output:
     transition: 0.01
 ---
 
-# Introduction 
+# Introduction
 
-## <a href="http://bowerth.github.io/"> <img src="../images/me.png"> </a>
+## <a href="http://bowerth.github.io/"> <img src="../images/rome-from-fao-building.png" style="width:20%;height:20%;"> </a>
 ### About Me
 
 
-- U.S. Air Force - Operations Research Analyst
-- Air Force Institute of Technology - Assistant Professor
-- University of Cincinnati - Adjunct Assistant Professor
-- Website: <a href="http://bowerth.github.io">bowerth.github.io</a>
-- Twitter: <a href="https://twitter.com/bowerth">@bowerth</a>
-- Code: <a href="https://github.com/bowerth">GitHub</a>
+- 2005-2009 Economist, East Asia (University Tuebingen)
+- 2010 OECD Statistics Directorate
+- 2011-2015 OECD Directorate for Science, Technology and Innovation
+- 2016 FAO ESS, Methodological Innovations
+- Website: <a href="http://rdata.work/">rdata.work</a>
+- GitHub: <a href="http://github.com/SWS-Methodology/">SWS-Methodology</a>, <a href="https://github.com/bowerth">bowerth</a>
+- Email: <a href="mailto:bo.werth@fao.org">bo.werth@fao.org</a>, <a href="mailto:bo.werth@gmail.com">bo.werth@gmail.com</a>
 
 ## Short Course Information
 
@@ -33,13 +34,13 @@ output:
 
 ### Time & Location
 
-   - Time: 1:15 - 4:15
-   - Location: Lindner 608
+   - Time: 10:00 - 12:00
+   - Location: OECD IT Traning
 
 ### Website
 
-   - Companion website: <a href="http://uc-r.github.io/">uc-r.github.io</a>
-   - Slides: <a href="http://uc-r.github.io/r_bootcamp">uc-r.github.io/r_bootcamp</a>
+   - Companion website: <a href="http://boot.rdata.work/">boot.rdata.work</a>
+   - Slides: <a href="http://boot.rdata.work/r_bootcamp">boot.rdata.work/r_bootcamp</a>
 
 
 ### What are we doing?
@@ -101,7 +102,7 @@ Upon successfully completing this course, students will:
 All required classroom material can be downloaded from the course website:
 <br><br>
 <center>
-[http://uc-r.github.io/r_bootcamp](http://uc-r.github.io/r_bootcamp)
+[http://boot.rdata.work/r_bootcamp](http://boot.rdata.work/r_bootcamp)
 </center>
 
 # Analytics & Programming
@@ -144,9 +145,9 @@ All required classroom material can be downloaded from the course website:
 <br><br>
 
 - .csv, .txt, .xls, etc. files
-- web scraping
-- databases: MySQL, Oracle, PostgreSQL, etc.
-- SPSS, Stat, SAS
+- web scraping: xml text nodes, html tables (rvest)
+- databases: Microsoft SQL Server, MySQL, Oracle, PostgreSQL, mongodb, etc.
+- SPSS, STATA, SAS
 
 ## Why R? | Built for Analytics!
 <center>
@@ -168,7 +169,7 @@ All required classroom material can be downloaded from the course website:
 
 - joining disparate data sets
 - selecting, filtering, summarizing
-- great "pipe-line" process
+- great "pipe-line" process: %>%
 
 ## Why R? | Built for Analytics!
 <center>
@@ -178,8 +179,8 @@ All required classroom material can be downloaded from the course website:
 <br><br>
 
 - R is known for its visualization capabilities
-- ggplot
-- interactive plotting - easily leverage D3.js libraries
+- ggplot introduced grammar of graphics
+- interactive plotting - easily leverage D3.js libraries using htmlwidgets
 
 ## Why R? | Built for Analytics!
 <center>
@@ -199,8 +200,8 @@ All required classroom material can be downloaded from the course website:
 
 <br><br>
 
-- RMarkdown (produce slides, HTML web pages, pdf)
-- Shiny
+- RMarkdown (produce slides, HTML web pages, pdf, doc)
+- Shiny allows rapid prototyping of web applications (HTML / CSS / JS)
 - Reproducibility (communicate to your future self!)
 
 ## Why R? | Great Community!
@@ -274,13 +275,13 @@ External to R:
 ```{r, echo=TRUE, collapse=TRUE, eval=FALSE}
 # get your current working directory
 getwd()
-[1] "/Users/bradboehmke/Dropbox/Academia/University of Cincinnati/Intro to R Bootcamp"
+[1] "/home/xps13/Dropbox/Programming/R/Intro-to-R-Bootcamp"
 
 # set your working directory
-setwd("/Users/bradboehmke/Dropbox/Academia/University of Cincinnati")
+setwd("/home/xps13/Dropbox/Programming/R")
 
 getwd()
-[1] "/Users/bradboehmke/Dropbox/Academia/University of Cincinnati"
+[1] "/home/xps13/Dropbox/Programming/R"
 ```
 
 
@@ -333,7 +334,7 @@ x = 3                   # BAD
 x <- 3                  # GOOD
 ```
 
-Must be specific:
+Variable names are case sensitive:
 ```{r, echo=TRUE, collapse=TRUE, eval=FALSE}
 x <- 3
 

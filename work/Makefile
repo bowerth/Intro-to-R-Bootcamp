@@ -1,7 +1,7 @@
 ## Makefile created by 'dryworkflow' at Mon May  9 16:01:11 2016
 
 .PHONY: all
-all: R-Bootcamp.html # get-data.html 3-data-structures.html 4-data-types.html tidy-data.html dplyr-data.html 7-quickplots.html 8-ggplot.html \
+all: R-Bootcamp.html get-data.html 3-data-structures.html 4-data-types.html tidy-data.html dplyr-data.html 7-quickplots.html 8-ggplot.html # \
 R-Bootcamp-students.html get-data-students.html 3-data-structures-students.html 4-data-types-students.html tidy-data-students.html dplyr-data-students.html 7-quickplots-students.html 8-ggplot-students.html
 
 # teacher

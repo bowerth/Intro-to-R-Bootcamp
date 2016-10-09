@@ -38,8 +38,8 @@ output:
 
 ### Website
 
-   - Companion website: <a href="http://uc-r.github.io/">uc-r.github.io</a>
-   - Slides: <a href="http://uc-r.github.io/r_bootcamp">uc-r.github.io/r_bootcamp</a>
+   - Companion website: <a href="http://boot.rdata.work/">boot.rdata.work</a>
+   - Slides: <a href="http://boot.rdata.work/r_bootcamp">boot.rdata.work/r_bootcamp</a>
 
 
 ### What are we doing?
