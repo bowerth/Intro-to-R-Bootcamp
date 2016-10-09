@@ -1,0 +1,6 @@
+s/ images\// ..\/images\//g
+s/uc_logo2.png/oecd_logo2.png/g
+s/ data\// ..\/data\//g
+s/Brad Boehmke, Ph.D./Bo Werth, FAO ESS/g
+s/bradleyboehmke/bowerth/g
+s/uc-r.github.io/boot.rdata.work/g

@@ -1,0 +1,4 @@
+# file types
+work/*.html
+work/*_cache/
+work/*_files/
