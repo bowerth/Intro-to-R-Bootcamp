@@ -1,4 +1,8 @@
 # file types
 work/*.html
+*.Rhistory
+
+# folders
 work/*_cache/
 work/*_files/
+.Rproj.user/
