@@ -230,6 +230,48 @@ pew <- read_excel("../data/PEW Middle Class Data.xlsx", sheet = "3. Median HH in
 View(pew)
 ```
 
+
+# Importing SAS and Stata files
+
+## Importing SAS Files
+
+- The SAS System uses a prorpietary binary format for data files (`.sas7bdat` and ` .sas7bcat`)
+- The [`haven`](http://github.com/tidyverse/haven) package leverages the
+  [ReadStat](https://github.com/WizardMac/ReadStat) C library to read both file
+  formats and write `.sas7bdat`
+
+```{r, collapse=TRUE, cache=TRUE, warning=FALSE}
+library(haven)
+
+helpfromSAS <- read_sas("../data/help.sas7bdat")
+str(helpfromSAS[, 1:2])
+```
+
+- Benefits of `haven`
+    - date times are converted to corresponding R classes
+    - labelled vectors are returned as a new labelled class
+    - can easily coerce to factors or replace labelled values with missings
+    - all functions return tibbles
+    - read more about the C library [here](https://github.com/WizardMac/ReadStat)
+
+## Importing Stata Files
+
+- `haven`/`ReadStat` can read Stata files up to version 14 (latest) and save objets as `.dta`
+- Stata missing values are displayed as `NaN`
+
+```{r, collapse=TRUE, cache=TRUE, warning=FALSE}
+carsdataSTATA <- read_dta("../data/carsdata.dta")
+psych::describe(carsdataSTATA, skew = FALSE)
+
+carsdataSTATA$cars[1] <- NA
+write_dta(carsdataSTATA, path = "../data/carsdata_out.dta", version = 14)
+
+read_dta("../data/carsdata_out.dta")[1:3,]
+```
+
+- Supports Stata "extended" missing values, `.A` through `.Z` using a tagged `NA` in R
+- See [semantics](https://github.com/tidyverse/haven/blob/master/vignettes/semantics.Rmd) vignette of `haven` package for additional information
+
 # Scraping Online Files
 
 ## Scraping Online Files | Tabular files
@@ -320,16 +362,20 @@ View(reddit)
 
 ## Remember These Functions!
 
-Operator/Function       Description             
------------------       ----------------       
-`data()`                access built-in data sets              
-`?`                     will provide you information regarding built-in data (i.e. `?mtcars`)                
+Operator/Function       Description
+-----------------       ----------------
+`data()`                access built-in data sets
+`?`                     will provide you information regarding built-in data (i.e. `?mtcars`)
 `read.csv()`            base R function for reading in .csv files (can also be used to read in a .csv file stored online)
 `read.delim()`          base R function for reading in .txt and .tsv files
 `read_excel()`          imports Excel data (provided by the `readxl` package)
 `read.xls()`            imports Excel data stored online (provided by the `gdata` package)
+`read_sas()`              imports `.sas7bdat` and `.sas7bcat` files (provided by the `haven` package)
+`read_dta()`            imports Stata files (provided by the `haven` package)
 `View()`                opens a spreadsheet-style data viewer
------------------       ----------------        
+-----------------       ----------------
+
+- [R Data Import/Export](https://cran.r-project.org/doc/manuals/r-devel/R-data.html) manual
 
 ## Break {.flexbox .vcenter}
 
