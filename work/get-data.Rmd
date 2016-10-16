@@ -236,7 +236,7 @@ View(pew)
 
 - Dense subject with *LOTS* to learn
 - We'll only focus on reading in tabular and Excel files stored online
-- For more info regarding "real web scraping" see the tutorial at: [boot.rdata.work/scraping](boot.rdata.work/scraping)
+<!-- - For more info regarding "real web scraping" see the tutorial at: [boot.rdata.work/scraping](boot.rdata.work/scraping) -->
 
 <br>
 
@@ -281,7 +281,7 @@ View(data_gov)
 </font>
 
 <font size="5">
-`https://bowerth.github.io/public/../data/reddit.csv`
+`https://dl.dropboxusercontent.com/u/1807228/reddit.csv?dl=1`
 </font>
 
 <br>
@@ -300,11 +300,11 @@ View(data_gov)
 <br>
 <br>
 
-`1.` Download the file stored at: bowerth.github.io/public/../data/reddit.csv
+`1.` Download the file stored at: https://dl.dropboxusercontent.com/u/1807228/reddit.csv?dl=1
 
 `2.` Save it as an object titled `reddit`
 ```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
-url <- "https://bowerth.github.io/public/../data/reddit.csv"
+url <- "https://dl.dropboxusercontent.com/u/1807228/reddit.csv?dl=1"
 
 reddit <- read.csv(url)
 ```
