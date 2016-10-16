@@ -1,5 +1,7 @@
 # file types
 work/*.html
+files-teacher/*.html
+files-students/*.html
 *.Rhistory
 
 # folders
