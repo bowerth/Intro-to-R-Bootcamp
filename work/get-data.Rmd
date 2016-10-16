@@ -358,6 +358,29 @@ reddit <- read.csv(url)
 View(reddit)
 ```
 
+# SDMX
+
+## SDMX
+
+- Standard for Data and Metadata Exchange
+- International Organisations (OECD, Eurostat, ECB, IMF, World Bank, Unesco, ILO)
+- OECD.Stat: National `Accounts` > `Annual National Accounts` > `Main Aggregates` > `GDP`
+- Use `Export (SDMX)`: `SNA_TABLE1/AUS+AUT+BEL.B1_GA+B1G_P119+B1G.C+V`
+- modify URL in SDMX browser at [sdmx.rdata.work](http://sdmx.rdata.work/OECD/SNA_TABLE1.AUS+AUT+BEL.B1_GA+B1G_P119+B1G.C+V/)
+- download file from [sdmx.rdata.work](http://sdmx.rdata.work/getdownloadsdmx?) using `getURL()`
+
+```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
+tt <- getURL("http://sdmx.rdata.work/OECD/SNA_TABLE1.AUS+AUT+BEL.B1_GA+B1G_P119+B1G.C+V/?start=2009")
+read.csv(text = tt)
+```
+
+```{r, collapse=TRUE, cache=TRUE, echo=FALSE, warning=FALSE}
+read.csv("../data/sdmxwide.csv")[1:3, 1:3]
+```
+
+- constantly growing number of providers
+- few providers use latest standard of SDMX, making it difficult to develop tools
+
 # Key Things to Remember
 
 ## Remember These Functions!
