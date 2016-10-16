@@ -24,11 +24,11 @@ economics
 ########################
 
 # importing text files
-read.csv("data/mydata.csv")
-read.delim("data/mydata.txt")
+read.csv("../data/mydata.csv")
+read.delim("../data/mydata.txt")
 
 # assign data to new object
-mydata <- read.delim("data/mydata.tsv")
+mydata <- read.delim("../data/mydata.tsv")
 mydata
 
 View(mydata)
@@ -39,10 +39,10 @@ View(mydata)
 # YOUR TURN! #
 ##############
 # 1. Read in the facebook.tsv file in the data folder
-read.delim("data/facebook.tsv")
+head(read.delim("../data/facebook.tsv"))
 
 # 2. Read in and save the facebook.tsv file as an object titled facebook
-facebook <- read.delim("data/facebook.tsv")
+facebook <- read.delim("../data/facebook.tsv")
 
 # 3. Take a peek at what this data looks like
 View(facebook)
@@ -55,11 +55,11 @@ View(facebook)
 # install.packages("readxl")
 library(readxl)
 
-read_excel("data/mydata.xlsx", sheet = "Sheet5")
+read_excel("../data/mydata.xlsx", sheet = "Sheet5")
 
 # people love to make notes at the top of Excel files
-read_excel("data/mydata.xlsx", sheet = "Sheet3")
-read_excel("data/mydata.xlsx", sheet = "Sheet3", skip = 2)
+read_excel("../data/mydata.xlsx", sheet = "Sheet3")
+read_excel("../data/mydata.xlsx", sheet = "Sheet3", skip = 2)
 
 
 
@@ -68,12 +68,12 @@ read_excel("data/mydata.xlsx", sheet = "Sheet3", skip = 2)
 ##############
 # 1. Read in the spreadsheet titled "3. Median HH income, metro" in the 
 # "PEW Middle Class Data.xlsx" file
-read_excel("data/PEW Middle Class Data.xlsx", 
+read_excel("../data/PEW Middle Class Data.xlsx", 
            sheet = "3. Median HH income, metro", 
            skip = 5)
 
 # 2. Save it as an object titled pew
-pew <- read_excel("data/PEW Middle Class Data.xlsx", 
+pew <- read_excel("../data/PEW Middle Class Data.xlsx", 
                   sheet = "3. Median HH income, metro", 
                   skip = 5)
 
@@ -106,9 +106,9 @@ View(rents)
 ##############
 # YOUR TURN! #
 ##############
-# 1. Download the file stored at: https://bradleyboehmke.github.io/public/data/reddit.csv
+# 1. Download the file stored at: https://dl.dropboxusercontent.com/u/1807228/reddit.csv?dl=1
 
-url <- "https://bradleyboehmke.github.io/public/data/reddit.csv"
+url <- "https://dl.dropboxusercontent.com/u/1807228/reddit.csv?dl=1"
 read.csv(url)
 
 # 2. Save it as an object titled reddit
