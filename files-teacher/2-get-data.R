@@ -131,10 +131,10 @@ config2 <- list(
   )
 
 config3 <- list(
-  provider = "OECD",
-  flow = "SNA_TABLE1",
-  dimensions = "AUT+BEL.*.*",
-  parameters = ""
+  provider = "ECB",
+  flow = "EXR",
+  dimensions = "A+Q+M.USD.EUR.SP00.A",
+  parameters = "?start=2010"
   )
 
 ## f <- config1
@@ -168,7 +168,6 @@ writeLines(text = tt, con = csv_file)
 close(filecon)
 
 read.csv(file = csv_file)
-
 
 
 
