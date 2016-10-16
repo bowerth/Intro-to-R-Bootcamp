@@ -643,19 +643,15 @@ $$\text{friend_ratio} = \frac{\text{friendships_initiated}}{\text{friend_count}}
 
 ```{r, collapse=FALSE}
 # 1. Create a new variable `friend_ratio` that equals `friendships_initiated` / `friend_count`
-facebook <- facebook %>% mutate(friend_ratio = friendships_initiated / friend_count)
-
+facebook2 <- facebook %>% mutate(friend_ratio = friendships_initiated / friend_count)
 # 2. Find the median `friend_ratio` for males and females.
-facebook %>% 
-        group_by(gender) %>%
-        summarise(fr_median = median(friend_ratio, na.rm = TRUE))
-
+facebook2 %>% group_by(gender) %>%
+          summarise(fr_median = median(friend_ratio, na.rm = TRUE))
 
 # 1 & 2 in one fell swoop
-facebook %>% 
-        mutate(friend_ratio = friendships_initiated / friend_count) %>%
-        group_by(gender) %>%
-        summarise(fr_median = median(friend_ratio, na.rm = TRUE))
+facebook %>% mutate(friend_ratio = friendships_initiated / friend_count) %>%
+         group_by(gender) %>%
+         summarise(fr_median = median(friend_ratio, na.rm = TRUE))
 ```
 
 
