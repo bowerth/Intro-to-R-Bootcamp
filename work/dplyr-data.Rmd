@@ -129,7 +129,7 @@ Data sets:</font> <font size="6" color="000000">storms, tb, pollution, iris, a, 
 <ul>
   <li><font size="5"><a href="https://cran.r-project.org/web/packages/magrittr/index.html">magrittr</a> &#8594; <a href="https://twitter.com/stefanbache">Stefan Milton Bache</a></font>
   <li><font size="5">not required but extremely convenient</font>
-</ul>  
+</ul>
 <br><br>
 <center>filter(data, variable == *numeric_value*)</center>
 <br>
@@ -230,7 +230,7 @@ Create a new data frame that includes: <br>
 ## Solution
 
 
-```{r, collapse=FALSE}
+```{r, collapse=FALSE, cache=TRUE}
 # Import the facebook.tsv file in the data folder
 facebook <- read.delim("../data/facebook.tsv")
 
@@ -315,7 +315,7 @@ Continuing with our `facebook.tsv` data...
 
 ## Solution
 
-```{r, collapse=FALSE}
+```{r, collapse=FALSE, cache=TRUE}
 # 1. Filter the facebook data for just males
 fb_males <- facebook %>% filter(gender == "male")
 
@@ -368,12 +368,12 @@ fb2_males
 - Alters underlying attributes &#8594; note <font color="blue">Groups: city [3]</font> in output below
 - Becomes useful when combined with other functions
 
-```{r, echo=FALSE, message=FALSE}
+```{r, echo=FALSE, message=FALSE, cache=TRUE}
 library(EDAWR)
 library(dplyr)
 ```
 
-```{r, echo=TRUE, message=FALSE}
+```{r, echo=TRUE, message=FALSE, cache=TRUE}
 pollution %>% group_by(city)        
 ``` 
 
@@ -402,7 +402,7 @@ Select the following variables: <br>
 
 ## Solution
 
-```{r, collapse=FALSE}
+```{r, collapse=FALSE, cache=TRUE}
 # 1. Select specified variables and then group by gender
 facebook %>%
         select(userid, age, gender, friend_count) %>%
@@ -499,7 +499,7 @@ group by gender and calculate the mean and median for `age` and `friend_count`
 
 ## Solution
 
-```{r, collapse=FALSE}
+```{r, collapse=FALSE, cache=TRUE}
 # 1. Calculate the mean and median for tenure and friend_count
 facebook %>% summarise(tenure_avg = mean(tenure, na.rm = TRUE),
                        tenure_med = median(tenure, na.rm = TRUE),
@@ -563,7 +563,7 @@ Continuing with our `facebook.tsv` data...
 
 ## Solution
 
-```{r, collapse=FALSE}
+```{r, collapse=FALSE, cache=TRUE}
 facebook %>% 
         group_by(age) %>% 
         summarise(friend_count = median(friend_count, na.rm = TRUE)) %>% 
@@ -641,7 +641,7 @@ $$\text{friend_ratio} = \frac{\text{friendships_initiated}}{\text{friend_count}}
 
 ## Solution
 
-```{r, collapse=FALSE}
+```{r, collapse=FALSE, cache=TRUE}
 # 1. Create a new variable `friend_ratio` that equals `friendships_initiated` / `friend_count`
 facebook2 <- facebook %>% mutate(friend_ratio = friendships_initiated / friend_count)
 # 2. Find the median `friend_ratio` for males and females.
@@ -767,7 +767,7 @@ Join the `regions` data to the `reddit` data
 
 ## Solution
 
-```{r, collapse=TRUE, message=FALSE}
+```{r, collapse=TRUE, message=FALSE, cache=TRUE}
 reddit <- read.csv("../data/reddit.csv", stringsAsFactors = FALSE)
 regions <- read.csv("../data/regions.csv", stringsAsFactors = FALSE)
 
@@ -775,6 +775,47 @@ reddit <- reddit %>% left_join(regions)
 
 str(reddit)
 ```
+
+
+# substitute( ) | Programming with dplyr
+
+## substitute( )
+
+```{r, collapse=FALSE, cache=TRUE}
+friend_ratio <- function(data, nom, denom) {
+  call <- substitute(data_new <- data %>%
+                       transmute(friend_ratio = nom / denom),
+                     list(nom = as.name(nom),
+                          denom = as.name(denom)))
+  eval(call)
+  return(as.vector(data_new$friend_ratio))
+}
+
+facebook$friend_ratio <- friend_ratio(data = facebook,
+                                      nom = "friendships_initiated",
+                                      denom = "friend_count")
+facebook %>% tbl_df %>% select(userid, age, gender, friend_count) %>% arrange(desc(friend_count))
+```
+
+
+## substitute ( )
+
+```{r, collapse=FALSE, cache=TRUE}
+group_median <- function(data, id_vars, var, na.rm) {
+  id_vars_sym <- lapply(id_vars, as.symbol)
+  call <- substitute(data_new <- data %>%
+                       group_by_(.dots = id_vars) %>%
+                       summarise(var_median = median(var, na.rm = na.rm)),
+                     list(id_vars = id_vars_sym,
+                          var = as.name(var)))
+  eval(call)
+  return(data_new)
+}
+facebook %>% mutate(minor = ifelse(age < 18, TRUE, FALSE)) %>%
+                    group_median(id_vars = c("gender", "minor"),
+                          var = "friend_ratio", na.rm = TRUE)
+```
+
 
 # Key Things to Remember
 
