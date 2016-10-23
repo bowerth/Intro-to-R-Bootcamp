@@ -47,7 +47,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
         ylab("Highway Mileage") +
         ggtitle("Fuel Economy vs. Engine Displacement") +
         theme_bw()
-        
+
 ```
 
 
@@ -55,7 +55,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 
 Load these packages to follow along with this tutorial
 
-```{r, eval=TRUE, message=FALSE, warning=FALSE}
+```{r, eval=TRUE, message=FALSE, warnin/home/xps13/Dropbox/GitHub/slidify/as_seminar_reportg=FALSE}
 library(ggplot2)
 library(readxl)
 library(dplyr)
@@ -323,7 +323,7 @@ sales_plot <- ggplot(sales_by_date, aes(`Purchase Date`, Revenue)) +
 
 sales_plot + geom_smooth(span = .1)
 
-sales_plot + geom_smooth(span = .9. se = FALSE)
+sales_plot + geom_smooth(span = .9, se = FALSE)
 
 sales_plot + geom_smooth(method = "lm", se = FALSE)
 ```
