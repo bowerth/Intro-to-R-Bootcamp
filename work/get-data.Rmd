@@ -20,8 +20,19 @@ output:
 1. Lots of built-in data sets provided by R
 2. Text files use delimiters - these determine the function to read in the data
 3. There is no base R function to read in Excel data - must use a package
-4. Web scraping is a dense subject but scraping online text/Excel files *can* be as easy as reading in these files from your hard drive
+4. The [`haven`](http://github.com/tidyverse/haven) package can read and write SAS, Stata and SPSS files
+5. Web scraping is a dense subject but scraping online text/Excel files *can* be as easy as reading in these files from your hard drive
+6. SDMX APIs can be directly accessed from R using Java functions
+7. Provider-specific functions can be created to extract and transform data from non-SDMX REST APIs
 
+<div class="notes">
+This is my *note*.
+
+- It can contain markdown
+- like this list
+- Patricia
+
+</div>
 
 # Built-in Data
 
@@ -55,41 +66,30 @@ state.region
 ### Note
 
 - to load any of these data sets/strings into your global environment: `data("name of data set")`
-- type `?name` to get more information about the built-in data
+- data sets that are part of unloaded packages can be loaded using `data(... package = ...)`
+- type `?name` to get more information about the built-in data (the containing package must be loaded)
 
+## Example
 
-## Your Turn
-
-<br>
-<br>
-
-<font size="10">
-`1.` Load the `iris` data set
-
-<br>
-
-`2.` What is this data measuring?
-</font>
-
-
-
-## Solution
-<br>
-<br>
-
-`1.` Load the `iris` data set
+`1.` Load the `economics` data set
 ```{r, collapse=TRUE, eval=FALSE}
-data(iris)
+data(economics, package = "ggplot2")
 ```
-
-<br>
 
 `2.` What is this data measuring?
 ```{r, collapse=TRUE, eval=FALSE}
-?iris
+library(ggplot2)
+?economics
 ```
 
-Description from the help screen: "This famous (Fisher's or Anderson's) iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica."
+Description from the help screen: "This dataset was produced from US economic time series data available from <URL: http://research.stlouisfed.org/fred2>. ‘economics’ is in "wide" format, ‘economics_long’ is in "long" format."
+
+- `date` Month of data collection
+- `psavert` personal savings rate
+- `pce` personal consumption expenditures, in billions of dollars
+- `unemploy` number of unemployed in thousands
+- `uempmed` median duration of unemployment, in week
+- `pop` total population, in thousands
 
 # Importing Text Files
 
@@ -101,7 +101,7 @@ Description from the help screen: "This famous (Fisher's or Anderson's) iris dat
     - .txt
     - .tsv
 - These delimiters help us know what functions to use to read in the data
-- I'll illustrate with the following files in the R-Bootcamp download file
+- I'll illustrate with the following files in the R-Bootcamp dowhttp://127.0.0.1:4321/nload file
     - `mydata.csv`
     - `mydata.txt`
     - `mydata.tsv`
@@ -121,7 +121,7 @@ read.delim("../data/mydata.txt")
 
 ## Importing Text Files | Base R
 
-When importing data, save to a file by using the assignment operator:
+When importing data, store as data.frame object by using the assignment operator:
 
 ```{r, cache=TRUE, collapse=TRUE, warning=FALSE}
 mydata <- read.delim("../data/mydata.tsv")
@@ -133,47 +133,32 @@ mydata
 
 - You now have a data object in your global environment named `mydata`
 - View your data in a spreadsheet form:
-    - clicking on the object in the global environment space or 
+    - clicking on the object in the global environment space or
     - type `View(mydata)` in your console
 
+## OECD.Stat CSV Example
 
-## Your Turn
-<br>
-<br>
+Open http://stats.oecd.org/Index.aspx?DataSetCode=SNA_TABLE1 in web browser, customise selection and export Text file (CSV)
 
-<font size="10">
-`1.` Read in the `facebook.tsv` file
-</font>
+&#9755; Transaction: `B1_GA` &#9755; Measure: `C`, `V` &#9755; Year: `1990-2015`
 
-<br>
-
-<font size="10">
-`2.` Save it as an object titled `facebook`
-</font>
-
-<br>
-
-<font size="10">
-`3.` Take a peek at what this data looks like
-</font>
+<center>
+<img src="../images/oecd-stat-sna-table1.png" width="100%" height="100%"/>
+</center>
 
 
+## OECD.Stat CSV Example
 
-## Solution
+Read in the `sna_table1.csv` file and create object `sna_table1`
 
-<br>
-<br>
-
-`1` & `2`: Read in the `facebook.tsv` file and save as `facebook` 
 ```{r, collapse=TRUE, cache=TRUE}
-facebook <- read.delim("../data/facebook.tsv")
+sna_table1 <- read.csv("../data/sna_table1.csv")
 ```
 
-<br>
+Take a peek at the object's data structure
 
-`3.`: Take a peek at what this data looks like
-```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
-View(facebook)
+```{r, collapse=TRUE, cache=TRUE, eval=TRUE}
+str(sna_table1, width = 100, strict.width = "cut")
 ```
 
 
@@ -197,37 +182,35 @@ read_excel("../data/mydata.xlsx", sheet = "Sheet5")
     - recognizes date and time variables
     - keeps text variables as characters rather than factors (more to come on this)
     - does not collapse variable names
-    - read more about `readxl` capabilities [here]()
-- `xlsx` is an alternative package for reading in Excel files
+    - read more about `readxl` capabilities [here](https://cran.r-project.org/web/packages/readxl/README.html)
+- `xlsx` and `XLConnect` are alternative packages for reading and writing Excel files
 
-## Your Turn
-<br>
+## Example
 
-<font size="7">`1.` Read in the spreadsheet titled</font><br><br>
-<font size="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`3. Median HH income, metro` in the 
-`PEW Middle` <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Class Data.xlsx` file</font><br><br><br>
-<font size="7">`2.` Save it as an object titled `pew`</font><br><br><br>
-<font size="7">`3.` Take a peek at what this data looks like</font>
+Read in the spreadsheet `3. Median HH income, metro` in the `PEW Middle Class Data.xlsx` file
 
-<br>
-<br>
+&#9755; We need to specify the sheet using `read_excel(..., sheet = ...)`
 
-**Hint:** You will need to skip 5 lines &#9755; check out the help file on `read_excel` to do this
+&#9755; We need to skip 5 lines using `read_excel(..., skip = ...)`
 
-## Solution
-<br>
-<br>
+**Hint:** `?read_excel` provides help on function parameters
 
-`1` & `2`: Read in the `.xlsx` file and save as `pew` 
+<center>
+<img src="../images/pew-middle-class-data.png" width="100%" height="100%"/>
+</center>
+
+## Example
+
+Read in the `.xlsx` file and save as `pew`
+
 ```{r, collapse=TRUE, cache=TRUE, warning=FALSE}
 pew <- read_excel("../data/PEW Middle Class Data.xlsx", sheet = "3. Median HH income, metro", skip = 5)
 ```
 
-<br>
+Take a peek at what this data looks like
 
-`3`: Take a peek at what this data looks like
-```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
-View(pew)
+```{r, collapse=TRUE, cache=TRUE, eval=TRUE}
+head(pew)
 ```
 
 
@@ -272,49 +255,47 @@ read_dta("../data/carsdata_out.dta")[1:3,]
 - Supports Stata "extended" missing values, `.A` through `.Z` using a tagged `NA` in R
 - See [semantics](https://github.com/tidyverse/haven/blob/master/vignettes/semantics.Rmd) vignette of `haven` package for additional information
 
-# Scraping Online Files
 
-## Scraping Online Files | Tabular files
+# Reading Online Files
 
-- Dense subject with *LOTS* to learn
-- We'll only focus on reading in tabular and Excel files stored online
-<!-- - For more info regarding "real web scraping" see the tutorial at: [boot.rdata.work/scraping](boot.rdata.work/scraping) -->
+## Reading Online Files | Tabular files
 
-<br>
+- Download URLs to csv and Excel files can be passed directly to R functions
+- For inspection with other tools, the file can be downloaded first using `download.file()`
 
-Let's download some data from [https://www.data.gov/metrics](https://www.data.gov/metrics):
+```{r, collapse=TRUE, cache=TRUE, eval=TRUE}
+url <- "https://inventory.data.gov/dataset/f6f06df8-c102-4fe8-af31-c368be66166d/resource/d65072b5-08f0-4f90-bd57-65e731c59df2/download/userssharedsdfdata.govfederalagencyparticipation.csv"
+data_gov <- read.csv(file = url, stringsAsFactors = FALSE)
+str(data_gov, width = 100, strict.width = "cut", list.len = 2)
 
-```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
-# the url for the online CSV
-url <- "https://www.data.gov/media/federal-agency-participation.csv" 
+## download file
+destfile <- tempfile(fileext = ".csv")
+download.file(url = url, destfile = destfile)
+data_gov <- read.csv(file = destfile, stringsAsFactors = FALSE)
 
-# use read.csv to import
-data_gov <- read.csv(url, stringsAsFactors = FALSE)
-
-View(data_gov)
+str(data_gov, width = 100, strict.width = "cut", list.len = 2)
 ```
 
-## Scraping Online Files | Excel files
+## Reading Online Files | Excel files
 
-- Scraping online Excel files follows a similar process
+- Reading online Excel files follows a similar process
 - `gdata` package is particular easy to use
-
-<br>
 
 Let's download some data from [Fair Market Rents for Section 8 Housing](http://catalog.data.gov/dataset/fair-market-rents-for-the-section-8-housing-assistance-payments-program/resource/2d33555e-5d21-4baf-84a2-e4fb3aed0807):
 
-```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
-library(gdata)
+```{r, collapse=TRUE, cache=TRUE, eval=TRUE}
+suppressMessages(library(gdata))
 
 url <- "http://www.huduser.org/portal/datasets/fmr/fmr2015f/FY2015F_4050_Final.xls"
 
 # use read.xls to import
 rents <- read.xls(url)
 
-View(data_gov)
+str(rents, list.len = 5)
 ```
 
-## Your Turn
+
+## Example | Reading file from Dropbox
 <br>
 <br>
 
@@ -335,27 +316,31 @@ View(data_gov)
 <br>
 
 <font size="7">
-`3.` Take a peek at what this data looks like
+`3.` Inspect the data structure
 </font>
 
-## Solution
-<br>
-<br>
 
-`1.` Download the file stored at: https://dl.dropboxusercontent.com/u/1807228/reddit.csv?dl=1
+## Example
+
+`1.` Retrieve the file contents stored at: https://dl.dropboxusercontent.com/u/1807228/reddit.csv?dl=1
+
+```{r, collapse=TRUE, cache=TRUE, eval=TRUE}
+suppressMessages(library(RCurl))
+url <- "https://dl.dropboxusercontent.com/u/1807228/reddit.csv?dl=1"
+tt <- getURL(url)
+substr(tt, 1, 100)
+```
 
 `2.` Save it as an object titled `reddit`
-```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
-url <- "https://dl.dropboxusercontent.com/u/1807228/reddit.csv?dl=1"
 
+```{r, collapse=TRUE, cache=TRUE, eval=TRUE}
 reddit <- read.csv(url)
 ```
 
-<br>
+`3.` Inspect the data structure
 
-`3.` Take a peek at what this data looks like
-```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
-View(reddit)
+```{r, collapse=TRUE, cache=TRUE, eval=TRUE}
+str(reddit)
 ```
 
 # SDMX
@@ -365,21 +350,25 @@ View(reddit)
 - Standard for Data and Metadata Exchange
 - International Organisations (OECD, Eurostat, ECB, IMF, World Bank, Unesco, ILO)
 - OECD.Stat: National `Accounts` > `Annual National Accounts` > `Main Aggregates` > `GDP`
-- Use `Export (SDMX)`: `SNA_TABLE1/AUS+AUT+BEL.B1_GA+B1G_P119+B1G.C+V`
-- modify URL in SDMX browser at [sdmx.rdata.work](http://sdmx.rdata.work/OECD/SNA_TABLE1.AUS+AUT+BEL.B1_GA+B1G_P119+B1G.C+V/)
+- Use `Export (SDMX)`
+- modify URL in SDMX browser at [sdmx.rdata.work](http://sdmx.rdata.work/OECD/SNA_TABLE1.*.B1_GA.C+V/?start=1990&end=2015)
 - download file from [sdmx.rdata.work](http://sdmx.rdata.work/getdownloadsdmx?) using `getURL()`
 
 ```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
-tt <- getURL("http://sdmx.rdata.work/OECD/SNA_TABLE1.AUS+AUT+BEL.B1_GA+B1G_P119+B1G.C+V/?start=2009")
-read.csv(text = tt)
+http_response <- getURL("http://sdmx.rdata.work/OECD/SNA_TABLE1.*.B1_GA.C+V/?start=1990&end=2015")
+tt <- getURL("http://sdmx.rdata.work/getdownloadsdmx?")
+read.csv(text = tt)[1:3, 1:3]
 ```
 
 ```{r, collapse=TRUE, cache=TRUE, echo=FALSE, warning=FALSE}
+## dat <- read.csv(text = tt)
+## write.csv(dat, file = "../data/sdmxwide.csv", row.names = FALSE)
 read.csv("../data/sdmxwide.csv")[1:3, 1:3]
 ```
 
 - constantly growing number of providers
 - few providers use latest standard of SDMX, making it difficult to develop tools
+- [SDMX Java functions](http://github.com/amattioc/SDMX) available for a range of tools (R, SAS, Matlab, Stata, Excel)
 
 
 # curling REST APIs
@@ -388,20 +377,18 @@ read.csv("../data/sdmxwide.csv")[1:3, 1:3]
 
 - National Statistical Offices have started setting REST APIs for public data retrieval
 - The majority of NSOs create their individual API and few use existing community standards
-- The [`nsoApi`](https://github.com/bowerth/nsoAPI) package provides functions to harmonize information into an R standard time series format
+- [`nsoApi`](https://github.com/bowerth/nsoAPI) provides functions to harmonize information into an R time series format
 - [opendata-tables](https://www.gitbook.com/read/book/bowerth/opendata-tables) lists tables that can be retrieved from SDMX, PXWEB and other standards
 - Some of the providers require registration, e.g. the BEA (USA) and ONS (UK)
 - GENESIS (Germany) requires a paid subscription to access the REST API
 
-```{r, collapse=TRUE, cache=TRUE, eval=FALSE}
+```{r, collapse=TRUE, cache=TRUE, eval=TRUE}
 library(nsoApi)
-
 cbs_data <- cbsODataAPI(api="http://opendata.cbs.nl/ODataApi/OData/", DSD="82572ENG", scheme="TypedDataSet")
+head(cbs_data[, 1:4])
 ```
 
-```{r, collapse=TRUE, cache=TRUE, echo=FALSE}
-read.csv("../data/cbs_data.csv")[1:5, 1:4]
-```
+- examples for other providers available in [nsoApi package vignette](https://github.com/bowerth/nsoApi/blob/master/vignettes/nsoApi.md)
 
 # Key Things to Remember
 
@@ -422,13 +409,13 @@ Operator/Function       Description
 
 - [R Data Import/Export](https://cran.r-project.org/doc/manuals/r-devel/R-data.html) manual
 
-## Break {.flexbox .vcenter}
+<!-- ## Break {.flexbox .vcenter} -->
 
-<div class="centered">
+<!-- <div class="centered"> -->
 
-<font size="10">5 minutes!</font>
+<!-- <font size="10">5 minutes!</font> -->
 
-</div>
+<!-- </div> -->
 
 
 
