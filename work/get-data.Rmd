@@ -402,9 +402,10 @@ Operator/Function       Description
 `read.delim()`          base R function for reading in .txt and .tsv files
 `read_excel()`          imports Excel data (provided by the `readxl` package)
 `read.xls()`            imports Excel data stored online (provided by the `gdata` package)
-`read_sas()`              imports `.sas7bdat` and `.sas7bcat` files (provided by the `haven` package)
+`read_sas()`            imports `.sas7bdat` and `.sas7bcat` files (provided by the `haven` package)
 `read_dta()`            imports Stata files (provided by the `haven` package)
 `View()`                opens a spreadsheet-style data viewer
+`str()`                 print data structure
 -----------------       ----------------
 
 - [R Data Import/Export](https://cran.r-project.org/doc/manuals/r-devel/R-data.html) manual
