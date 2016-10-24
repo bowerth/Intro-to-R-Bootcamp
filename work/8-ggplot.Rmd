@@ -3,7 +3,7 @@ title: "R Programming"
 subtitle: "Advanced Graphics with ggplot2"
 author: | 
   | Bo Werth, FAO
-output: 
+output:
   ioslides_presentation:
     logo: ../images/oecd_logo2.png
     widescreen: true
@@ -12,7 +12,34 @@ output:
 ---
 
 
-# Key Things to Remember
+# R popularity and ggplot2
+
+## google trends
+
+```{r, echo=FALSE, message=FALSE}
+library(gtrendsR)
+```
+
+```{r, eval=FALSE, echo=FALSE}
+user <- Sys.getenv("GMAIL_USER")
+psw <- Sys.getenv("GMAIL_PW")
+gconnect(user, psw)
+period <- list(start = "2010-01-01", end = "2016-09-01")
+```
+
+- data visualization package for R created by Hadley Wickham in 2005
+- implementation of Leland Wilkinson's Grammar of Graphics: break up graphs into semantic components such as scales and layers
+- provides defaults for web and print display of common scales
+- high degree of modularity
+
+```{r, cache=TRUE, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center', fig.height=4, fig.width=10}
+## keywords2 <- c("python programming", "r programming", "ggplot")
+## lang_trend_2 <- gtrends(keywords2, start_date = period[["start"]], end_date = period[["end"]])
+## save(lang_trend_2, file = "data/lang_trend_2.rda")
+load("../data/lang_trend_2.rda")
+plot(lang_trend_2)
+```
+
 
 ## ggplot2 provides unlimited visualization customization
 
@@ -219,26 +246,6 @@ grid.arrange(p1, p2, p3, ncol = 3)
 ```
 
 
-## Your Turn
-
-<br>
-<br>
-
-<blockquote>
-<font size="6">
-1. Assess the distribution of age, tenure, and gender in the `facebook` data.
-</font>
-</blockquote>
-
-<br>
-
-<blockquote>
-<font size="6">
-2. Assess the frequency of age range, education, and income range in the `reddit` data. 
-</font>
-</blockquote>
-
-
 # Bivariate Geoms
 
 ## Scatter Plots
@@ -427,18 +434,6 @@ grid.arrange(p1, p2, ncol = 2)
 ```
 
 
-## Your Turn
-
-<br>
-<br>
-
-<blockquote>
-<font size="6">
-Assess bivariate relationships between tenure, age, gender, likes, etc. in the `facebook` data.
-</font>
-</blockquote>
-
-
 # Multivariate Capabilities
 
 ## Color, Size, Shape, etc.
@@ -469,14 +464,14 @@ grid.arrange(p1, p2, p3, ncol = 3)
 
 ## Color, Size, Shape, etc.
 
-```{r, cache=TRUE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
-prod_revenue <- supermarket %>%
-        group_by(`Purchase Date`, `Product Family`) %>%
+```{r, cache=TRUE, fig.align='center', fig.width=10, fig.height=3.5, warning=FALSE, message=FALSE}
+prod_revenue <- supermarket %>% group_by(`Purchase Date`, `Product Family`) %>%
         summarise(Revenue = sum(Revenue, na.rm = TRUE))
-
 ggplot(prod_revenue, aes(`Purchase Date`, Revenue, color = `Product Family`)) +
-        geom_line(alpha = .2) +
+  geom_line(alpha = .2) +
+  scale_color_manual(values = c("#4f81bd", "#8cc841", "#c0504d")) +
         geom_smooth(se = FALSE, span = .1)
+
 ```
 
 
@@ -513,16 +508,6 @@ p2 <- ggplot(prod_revenue, aes(`Purchase Date`, Revenue)) +
 grid.arrange(p1, p2, ncol = 2)
 ```
 
-## Your Turn
-
-<br>
-<br>
-
-<blockquote>
-<font size="6">
-Use color, shape, size, and facetting to assess multivariate relationships between tenure, age, gender, likes, etc. in the `facebook` data.
-</font>
-</blockquote>
 
 # Visualization Aesthetics
 
@@ -615,17 +600,9 @@ ggplot(supermarket, aes(`Purchase Date`, Revenue, color = Country)) +
         theme(legend.position = "bottom")
 ```
 
-## Your Turn
+## Example: Histogram
 
-<blockquote>
-<font size="6">
-Re-create this visualization as close as possible
-</font>
-</blockquote>
-
-<br>
-
-```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=TRUE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
 ggplot(supermarket, aes(Revenue)) +
         geom_histogram(bins = 100, fill = "antiquewhite", color = "grey40") +
         scale_x_continuous(limits = c(0, 60), breaks = seq(0, 60, by = 10),
@@ -633,10 +610,9 @@ ggplot(supermarket, aes(Revenue)) +
         ggtitle("Gross Revenue per Transaction")
 ```
 
-## Your Turn: slightly more ambitious
+## Example: Point Plot
 
-
-```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=6, fig.height=5.5, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
 cty_levels <- supermarket %>%
         group_by(City) %>%
         summarise(Revenue = sum(Revenue, na.rm = TRUE)) %>%
@@ -646,11 +622,13 @@ city_rev <- supermarket %>%
         group_by(City, Gender) %>%
         summarise(Revenue = sum(Revenue, na.rm = TRUE)) %>%
         ungroup() %>%
-        mutate(City = factor(City, levels = cty_levels$City))
+  mutate(City = factor(City, levels = cty_levels$City))
+```
 
+```{r, cache=TRUE, echo=TRUE, fig.align='center', fig.width=6, fig.height=3.5, warning=FALSE, message=FALSE}
 ggplot(city_rev, aes(Revenue, City, color = Gender)) +
         geom_point() +
-        scale_x_continuous(labels = scales::dollar, 
+        scale_x_continuous(labels = scales::dollar,
                            limits = c(0, 10000),
                            breaks = seq(0, 10000, by = 2000)) +
         labs(x = NULL, y = NULL, title = "Total Revenue by Gender and Location") +
@@ -709,32 +687,6 @@ basic + theme_minimal() +
         )
 ```
 
-## Your Turn
-
-<blockquote>
-<font size="6">
-Using this base plot...
-</font>
-</blockquote>
-
-<br>
-
-```{r, eval=FALSE}
-ggplot(supermarket, aes(Revenue)) +
-        geom_histogram(bins = 100, fill = "antiquewhite", color = "grey40")
-```
-
-<blockquote>
-<font size="6">
-practice adjusting theme parameters.
-</font>
-</blockquote>
-
-<br><br><br><br><br><br>
-
-**Note:** check out `?theme` for details and examples on different theme parameters
-
-
 
 # Key Things to Remember
 
@@ -755,10 +707,10 @@ Function                Details
 -------------           ---------
 
 
-## Break {.flexbox .vcenter}
+<!-- ## Break {.flexbox .vcenter} -->
 
-<div class="centered">
+<!-- <div class="centered"> -->
 
-<font size="10">5 minutes!</font>
+<!-- <font size="10">5 minutes!</font> -->
 
-</div>
+<!-- </div> -->
