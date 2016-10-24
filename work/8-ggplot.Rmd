@@ -16,7 +16,6 @@ output:
 
 ## ggplot2 provides unlimited visualization customization
 
-
 <center>
 <img src="../images/tufte_weather.png" width="100%" height="100%"/>
 </center>
@@ -38,7 +37,7 @@ What you'll see here is just the beginning! See more at [http://docs.ggplot2.org
 
 Syntax for ggplot2 visualizations will look like:
 
-```{r, warning=FALSE, message=FALSE, fig.align='center', fig.height=3.25, fig.width=7}
+```{r, cache=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=3.25, fig.width=7}
 library(ggplot2)
 
 ggplot(data = mpg, aes(x = displ, y = hwy)) +
@@ -55,10 +54,11 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 
 Load these packages to follow along with this tutorial
 
-```{r, eval=TRUE, message=FALSE, warnin/home/xps13/Dropbox/GitHub/slidify/as_seminar_reportg=FALSE}
+```{r, eval=TRUE, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(readxl)
 library(dplyr)
+library(gridExtra)
 ```
 
 <br>
@@ -83,9 +83,7 @@ ggplot(data = supermarket, aes(x = `Purchase Date`, y = Revenue))
 ```
 
 
-```{r, fig.align='center', echo=FALSE, fig.width=10, fig.height=4, message=FALSE, warning=FALSE}
-library(gridExtra)
-
+```{r, cache=TRUE, fig.align='center', echo=FALSE, fig.width=10, fig.height=4, message=FALSE, warning=FALSE}
 p1 <- ggplot(data = supermarket)
 p2 <- ggplot(data = supermarket, aes(x = `Purchase Date`, y = Revenue))
 
@@ -125,7 +123,7 @@ ggplot(data = supermarket, aes(x = Revenue)) +
         geom_density()
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
 p1 <- ggplot(data = supermarket, aes(x = Revenue)) +
         geom_histogram()
 
@@ -151,7 +149,7 @@ ggplot(data = supermarket, aes(x = Revenue)) +
         geom_density(fill = "red", alpha = .5)
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
 p1 <- ggplot(data = supermarket, aes(x = Revenue)) +
         geom_histogram(bins = 100, color = "grey40", fill = "white")
 
@@ -181,7 +179,7 @@ ggplot(data = summary, aes(x = `Product Family`, y = n)) +
         geom_bar(stat = "identity")
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=8, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=8, fig.height=3, warning=FALSE, message=FALSE}
 p1 <- ggplot(data = supermarket, aes(x = `Product Family`)) +
         geom_bar()
 
@@ -207,7 +205,7 @@ ggplot(data = supermarket, aes(x = `Product Family`)) +
         geom_bar(fill = "dodgerblue", color = "grey40", width = .99)
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
 p1 <- ggplot(data = supermarket, aes(x = `Product Family`)) +
         geom_bar(fill = "dodgerblue", color = "grey40")
 
@@ -256,7 +254,7 @@ ggplot(supermarket, aes(`Purchase Date`, Revenue)) +
         geom_point(colour = "blue", alpha = .25)
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
 p1 <- ggplot(supermarket, aes(`Purchase Date`, Revenue)) +
         geom_point()
 
@@ -282,7 +280,7 @@ ggplot(supermarket, aes(factor(`Units Sold`), Revenue)) +
         geom_jitter(size = 1, alpha = .1)
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
 p1 <- ggplot(supermarket, aes(factor(`Units Sold`), Revenue)) +
         geom_point()
 
@@ -306,7 +304,7 @@ ggplot(sales_by_date, aes(`Purchase Date`, Revenue)) +
         geom_line()
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
 sales_by_date <- supermarket %>%
         group_by(`Purchase Date`) %>%
         summarise(Revenue = sum(Revenue, na.rm = TRUE))
@@ -328,7 +326,7 @@ sales_plot + geom_smooth(span = .9, se = FALSE)
 sales_plot + geom_smooth(method = "lm", se = FALSE)
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10.5, fig.height=3.5, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10.5, fig.height=3.5, warning=FALSE, message=FALSE}
 sales_plot <- ggplot(sales_by_date, aes(`Purchase Date`, Revenue)) +
         geom_line()
 
@@ -354,7 +352,7 @@ ggplot(supermarket, aes(factor(Children), Revenue)) +
         geom_boxplot(outlier.color = "red", outlier.shape = 1)
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
 p1 <- ggplot(supermarket, aes(factor(Children), Revenue)) +
         geom_boxplot()
 
@@ -383,7 +381,7 @@ ggplot(mpg, aes(class, hwy)) +
         geom_violin()
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
 p1 <- ggplot(mpg, aes(class, hwy)) +
         geom_boxplot()
 
@@ -414,7 +412,7 @@ ggplot(prod_revenue, aes(x = `Product Family`, y = Revenue)) +
         geom_bar(stat = "identity")
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=8, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=8, fig.height=3, warning=FALSE, message=FALSE}
 p1 <- ggplot(data = supermarket, aes(x = `Product Family`)) +
         geom_bar()
 
@@ -456,7 +454,7 @@ ggplot(supermarket, aes(`Purchase Date`, Revenue, color = Country)) +
         geom_point()
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
 p1 <- ggplot(supermarket, aes(Revenue, color = `Product Family`)) +
         geom_freqpoly()
 
@@ -471,7 +469,7 @@ grid.arrange(p1, p2, p3, ncol = 3)
 
 ## Color, Size, Shape, etc.
 
-```{r, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
 prod_revenue <- supermarket %>%
         group_by(`Purchase Date`, `Product Family`) %>%
         summarise(Revenue = sum(Revenue, na.rm = TRUE))
@@ -484,7 +482,7 @@ ggplot(prod_revenue, aes(`Purchase Date`, Revenue, color = `Product Family`)) +
 
 ## Facetting
 
-```{r, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
 ggplot(prod_revenue, aes(`Purchase Date`, Revenue)) +
         geom_line(alpha = .2) +
         geom_smooth(se = FALSE, span = .1) +
@@ -504,7 +502,7 @@ ggplot(prod_revenue, aes(`Purchase Date`, Revenue)) +
 ```
 
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
 p1 <- ggplot(prod_revenue, aes(`Purchase Date`, Revenue)) +
         geom_blank() +
         facet_grid(.~ `Product Family`)
@@ -542,7 +540,7 @@ p + scale_x_continuous(name = "Revenue from Individual Transactions",
 p + scale_x_log10(labels = scales::dollar)        
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
 p <- ggplot(supermarket, aes(Revenue)) +
         geom_histogram(bins = 100, color = "grey40", fill = "white")
 
@@ -568,7 +566,7 @@ p + lims(x = c(0, 100), y = c(0, 1000))
 ```
 
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3.5, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3.5, warning=FALSE, message=FALSE}
 p1 <- p + xlim(25, 55)
 
 p2 <- p + ylim(0, 400)
@@ -588,7 +586,7 @@ p + coord_cartesian(xlim = c(10, 50), ylim = c(0, 400))
 p + coord_flip()
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=8, fig.height=4, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=8, fig.height=4, warning=FALSE, message=FALSE}
 p1 <- p + coord_cartesian(xlim = c(10, 50), ylim = c(0, 400))
 p2 <- p + coord_flip()
 
@@ -599,7 +597,7 @@ grid.arrange(p1, p2, ncol = 2)
 
 Shorthand option for labelling axes and legends: `labs`, `xlab`, `ylab`, `ggtitle`
 
-```{r, fig.align='center', fig.width=10, fig.height=3.5, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, fig.align='center', fig.width=10, fig.height=3.5, warning=FALSE, message=FALSE}
 ggplot(prod_revenue, aes(`Purchase Date`, Revenue, color = `Product Family`)) +
         geom_line(alpha = .2) +
         geom_smooth(se = FALSE, span = .1) +
@@ -627,7 +625,7 @@ Re-create this visualization as close as possible
 
 <br>
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE, message=FALSE}
 ggplot(supermarket, aes(Revenue)) +
         geom_histogram(bins = 100, fill = "antiquewhite", color = "grey40") +
         scale_x_continuous(limits = c(0, 60), breaks = seq(0, 60, by = 10),
@@ -638,7 +636,7 @@ ggplot(supermarket, aes(Revenue)) +
 ## Your Turn: slightly more ambitious
 
 
-```{r, echo=FALSE, fig.align='center', fig.width=6, fig.height=5.5, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=6, fig.height=5.5, warning=FALSE, message=FALSE}
 cty_levels <- supermarket %>%
         group_by(City) %>%
         summarise(Revenue = sum(Revenue, na.rm = TRUE)) %>%
@@ -672,7 +670,7 @@ p + theme_minimal()
 p + theme_dark()
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, echo=FALSE, fig.align='center', fig.width=10, fig.height=3, warning=FALSE, message=FALSE}
 p <- ggplot(supermarket, aes(Revenue)) +
         geom_histogram(bins = 100, fill = "antiquewhite", color = "grey40")
 
@@ -692,13 +690,13 @@ basic <- ggplot(prod_revenue, aes(`Purchase Date`, Revenue, color = `Product Fam
         labs(x = NULL, color = NULL, y = NULL, title = "Total Historical Revenue by Product Family")
 ```
 
-```{r, fig.align='center', fig.width=10, fig.height=4, warning=FALSE}
+```{r, cache=TRUE, fig.align='center', fig.width=10, fig.height=4, warning=FALSE}
 basic
 ```
 
 ## Themes
 
-```{r, fig.align='center', fig.width=7, fig.height=3, warning=FALSE, message=FALSE}
+```{r, cache=TRUE, fig.align='center', fig.width=7, fig.height=3, warning=FALSE, message=FALSE}
 basic + theme_minimal() +
         theme(
                 text = element_text(family = "Georgia"),
