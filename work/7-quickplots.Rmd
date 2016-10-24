@@ -531,8 +531,20 @@ Line chart              `plot()`
 -------------           ---------
 
 
-## Break {.flexbox .vcenter}
+## Hands-on script 7-quickplots.R {.flexbox .vcenter}
 
-<div class="centered">
+<div class="align-left">
 
-<font size="10">5 minutes!</font>
+<font size="6">Start RStudio from \\\\asap1\\em_apps\$\\R</font>
+
+<font size="6">or</font>
+
+<font size="6">Log on to server and select R installation:</font>
+
+<font size="6">\\\\asap1\\em_apps\$\\R\\R-3.3.1</font>
+
+<br>
+
+<font size="6">setwd("T:/DKI/rtrainings/bootcamp/code-scripts")</font>
+
+</div>
