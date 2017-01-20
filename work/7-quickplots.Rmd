@@ -108,7 +108,7 @@ Import the following data sets from the data folder
 facebook.tsv
 reddit.csv
 race-comparison.csv
-Supermarket Transactions.xlsx
+Supermarket-Transactions.xlsx
 ```
 
 
@@ -427,7 +427,7 @@ legend("topleft", legend = c("HS Rate", "College Rate", "Unemployment"),
 
 ```{r, eval=FALSE}
 library(readxl)
-supermarket <- read_excel("../data/Supermarket Transactions.xlsx", sheet = "Data")
+supermarket <- read_excel("../data/Supermarket-Transactions.xlsx", sheet = "Data")
 
 boxplot(supermarket$Revenue)
 boxplot(Revenue ~ Gender, data = supermarket)
@@ -436,7 +436,7 @@ boxplot(Revenue ~ Gender + `Marital Status`, data = supermarket)
 
 ```{r, echo=FALSE, fig.align='center', warning=FALSE, message=FALSE, fig.height=4, fig.width=10}
 library(readxl)
-supermarket <- read_excel("../data/Supermarket Transactions.xlsx", sheet = "Data")
+supermarket <- read_excel("../data/Supermarket-Transactions.xlsx", sheet = "Data")
 par(mfrow = c(1, 3))
 boxplot(supermarket$Revenue)
 boxplot(Revenue ~ Gender, data = supermarket)
