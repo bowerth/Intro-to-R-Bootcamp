@@ -9,11 +9,12 @@ You can view the course website here: [http://boot.rdata.work/r_bootcamp](http:/
 
 ## Files
 
-`list-packages.sh`
-:   grep R script files searching for 'library' keyword
+`R-servr-work.sh`
+:   script to start R server based on Makefile that automatically recompiles Rmd files to html
 
-`createuser.sh`
-:   script to create new users after starting docker container using 'docker exec -it <container-id> bash && bash createuser.sh'
+The following files are called in sequence by `make`
+
+### sedreplace
 
 `replace-in-Rmd-files.sh`
 :   apply sedcommandsRmd to Rmd presentation slides
@@ -21,20 +22,21 @@ You can view the course website here: [http://boot.rdata.work/r_bootcamp](http:/
 `replace-in-R-scripts.sh`
 :   apply sedcommandsR to R code scripts
 
-`R-packages.txt`
-:   list of R packages created by 'list-packages.sh'
-
-`R-servr-work.sh`
-:   script to start R server based on Makefile that automatically recompiles Rmd files to html
-
-`sedcommandsR`
-:   sed commands to replace e.g. "data/" with "../data/"
-
-`sedcommandsRmd`
-:   sed commands to replace e.g. author name in slides
+### sync
 
 `sync-html-work-files.sh`
 :   apply changes to files in work/ folder to files in files-teacher/ folder
 
-`zip-data-slides-scripts.sh`
-:   update bootcamp.zip and sync with Public folder in dropbox
+### export
+
+`list-packages.sh`
+:   grep R script files searching for 'library' keyword
+
+`bootcamp.sh`
+:   update bootcamp.zip
+
+`createuser.sh`
+:   script to create new users after starting docker container using 'docker exec -it <container-id> bash && bash createuser.sh'
+
+`export-rsync.sh`
+:   rsync with Public folder in dropbox
