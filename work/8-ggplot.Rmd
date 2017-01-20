@@ -709,18 +709,18 @@ Function                Details
 
 ## Hands-on script 8-ggplot.R {.flexbox .vcenter}
 
-<div class="align-left">
+<!-- <div class="align-left"> -->
 
-<font size="6">Start RStudio from \\\\asap1\\em_apps\$\\R</font>
+<!-- <font size="6">Start RStudio from \\\\asap1\\em_apps\$\\R</font> -->
 
-<font size="6">or</font>
+<!-- <font size="6">or</font> -->
 
-<font size="6">Log on to server and select R installation:</font>
+<!-- <font size="6">Log on to server and select R installation:</font> -->
 
-<font size="6">\\\\asap1\\em_apps\$\\R\\R-3.3.1</font>
+<!-- <font size="6">\\\\asap1\\em_apps\$\\R\\R-3.3.1</font> -->
 
-<br>
+<!-- <br> -->
 
-<font size="6">setwd("T:/DKI/rtrainings/bootcamp/code-scripts")</font>
+<!-- <font size="6">setwd("T:/DKI/rtrainings/bootcamp/code-scripts")</font> -->
 
-</div>
+<!-- </div> -->
