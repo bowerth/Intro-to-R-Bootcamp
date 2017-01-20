@@ -18,7 +18,9 @@ change logo
 
 change name
 :   `s/Brad Boehmke, Ph.D./Bo Werth, FAO ESS/g`  
-	`s/bradleyboehmke/bowerth/g`
+	`s/bradleyboehmke/bowerth/g`  
+	`s/Supermarket Transactions.xlsx/Supermarket-Transactions.xlsx/g`  
+    `s/PEW Middle Class Data.xlsx/PEW-Middle-Class-Data.xlsx/g`
 
 change URL
 :   `s/uc-r.github.io/boot.rdata.work/g`

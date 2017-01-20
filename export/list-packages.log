@@ -1,0 +1,46 @@
+list-packages log
+
+2-get-data.R
+  ggplot2
+  readxl
+  haven
+  RCurl
+  gdata
+  RJSDMX
+  nsoApi
+  magrittr
+  xts
+  dygraphs
+
+5-tidy-data.R
+  tidyr
+  dplyr
+  EDAWR
+
+7-quickplots.R
+  readxl
+  dplyr
+
+8-ggplot.R
+  ggplot2
+  readxl
+  dplyr
+
+9-case-study-1/*.R
+  brew
+  knitr
+  markdown
+  readxl
+  ggplot2
+  reshape2
+  RColorBrewer
+  gridExtra
+  scales
+  dplyr
+  tidyr
+
+10-case-study-2.R
+  readxl
+  dplyr
+  ggplot2
+  ggthemes
