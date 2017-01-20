@@ -131,7 +131,7 @@ str(iris_dta)
 ## configure proxy server
 library(RCurl)
 curl <- RCurl::getCurlHandle()
-curlSetOpt(.opts = list(proxy = "wsg-proxy.oecd.org:80"), curl = curl)
+## curlSetOpt(.opts = list(proxy = "wsg-proxy.oecd.org:80"), curl = curl)
 ## obtain from Internet Explorer LAN configuration or PAC automatic configuration script
 
 ## scraping text files
@@ -259,7 +259,7 @@ getDimensions("EUROSTAT", "nama_nace64_c")
 
 
 ## As an alternative, we can explore all the metadata of interest with the graphical **SDMX helper**:
-sdmxHelp()
+## sdmxHelp()
 
 ## Finally, let's get some data
 ## single time series, freq=A, CURRENCY=USD

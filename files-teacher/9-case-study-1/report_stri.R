@@ -13,7 +13,8 @@ library(tidyr)
 
 ## Set working directory
 ## path <- file.path(dbpath, "GitHub", "jekyll", "sti", "extras", "brew_report_stri")
-path <- getwd()
+## path <- getwd()
+path <- "~/code-scripts/9-case-study-1"
 path.Rmd <- file.path(path, "Rmd") # Rnw and tex files are created here
 path.rmd <- file.path(path, "md")
 setwd(path)
