@@ -3,8 +3,9 @@
 MAKE=make
 SED=sedreplace
 WORK=work
+SYNC=sync
 EXPORT=export
-outputs=$(SED) $(WORK) $(EXPORT)
+outputs=$(SED) $(WORK) $(SYNC) $(EXPORT)
 
 .PHONY: all $(outputs)
 all: $(outputs)
