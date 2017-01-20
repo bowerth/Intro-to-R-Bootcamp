@@ -1,21 +1,22 @@
-## Makefile created by 'dryworkflow' at Mon May  9 16:01:11 2016
+## Makefile Intro-to-R-Bootcamp
+## - combine bash script files
 
 MAKE=make
-# DOWNLOAD=downloadData
 # READ=readMergeData
 WORK=work
-# REPORTS=reports
-# FRAGMENTS=fragments
 # outputs=$(DOWNLOAD) $(READ) $(WORK) $(REPORTS) $(FRAGMENTS)
 outputs=$(WORK)
 
 .PHONY: all $(outputs)
-all: $(outputs)
+all: $(outputs) bootcamp.zip
 
 $(outputs):
 	$(MAKE) --directory $@
 
-include ~/lib/common.mk
+bootcamp.zip: ${@:.zip=.sh} $(shell find ./data) $(shell find ./files-teacher) LICENSE
+	bash bootcamp.sh
+
+# include ~/lib/common.mk
 # include ~/lib/common_ioslides.mk
 
 # $(warning $(shell ./test.sh ))
