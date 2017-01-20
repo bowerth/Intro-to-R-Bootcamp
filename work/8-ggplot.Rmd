@@ -93,7 +93,7 @@ library(gridExtra)
 Import the following data sets from the data folder
 
 ```{r, eval=TRUE}
-supermarket <- read_excel("../data/Supermarket Transactions.xlsx", sheet = "Data")
+supermarket <- read_excel("../data/Supermarket-Transactions.xlsx", sheet = "Data")
 facebook <- read.delim("../data/facebook.tsv")
 reddit <- read.csv("../data/reddit.csv")
 race <- read.csv("../data/race-comparison.csv")

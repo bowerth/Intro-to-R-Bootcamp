@@ -69,13 +69,13 @@ read_excel("data/mydata.xlsx", sheet = "Sheet3", skip = 2)
 ## YOUR TURN! ##
 ################
 ## 1. Read in the spreadsheet titled "3. Median HH income, metro" in the 
-## "PEW Middle Class Data.xlsx" file
-read_excel("data/PEW Middle Class Data.xlsx", 
+## "PEW-Middle-Class-Data.xlsx" file
+read_excel("data/PEW-Middle-Class-Data.xlsx", 
            sheet = "3. Median HH income, metro", 
            skip = 5)
 
 ## 2. Save it as an object titled pew
-pew <- read_excel("data/PEW Middle Class Data.xlsx", 
+pew <- read_excel("data/PEW-Middle-Class-Data.xlsx", 
                   sheet = "3. Median HH income, metro", 
                   skip = 5)
 

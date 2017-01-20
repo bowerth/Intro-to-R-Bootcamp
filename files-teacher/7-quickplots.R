@@ -21,7 +21,7 @@ library(readxl)
 facebook <- read.delim("data/facebook.tsv")
 reddit <- read.csv("data/reddit.csv")
 race <- read.csv("data/race-comparison.csv")
-supermarket <- read_excel("data/Supermarket Transactions.xlsx", sheet = "Data")
+supermarket <- read_excel("data/Supermarket-Transactions.xlsx", sheet = "Data")
 
 
 ###############

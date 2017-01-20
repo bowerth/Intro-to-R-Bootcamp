@@ -187,7 +187,7 @@ read_excel("../data/mydata.xlsx", sheet = "Sheet5")
 
 ## Example
 
-Read in the spreadsheet `3. Median HH income, metro` in the `PEW Middle Class Data.xlsx` file
+Read in the spreadsheet `3. Median HH income, metro` in the `PEW-Middle-Class-Data.xlsx` file
 
 &#9755; We need to specify the sheet using `read_excel(..., sheet = ...)`
 
@@ -204,7 +204,7 @@ Read in the spreadsheet `3. Median HH income, metro` in the `PEW Middle Class Da
 Read in the `.xlsx` file and save as `pew`
 
 ```{r, collapse=TRUE, cache=TRUE, warning=FALSE}
-pew <- read_excel("../data/PEW Middle Class Data.xlsx", sheet = "3. Median HH income, metro", skip = 5)
+pew <- read_excel("../data/PEW-Middle-Class-Data.xlsx", sheet = "3. Median HH income, metro", skip = 5)
 ```
 
 Take a peek at what this data looks like
