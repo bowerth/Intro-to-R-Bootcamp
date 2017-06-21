@@ -1,0 +1,210 @@
+---
+title: "R Programming"
+subtitle: "More Plots in R"
+author: | 
+  | Bo Werth, FAO
+output: 
+  ioslides_presentation:
+    logo: ../images/oecd_logo2.png
+    widescreen: true
+    smaller: true
+    transition: 0.01
+---
+
+
+# Key Things to Remember
+
+## Look at your data!
+
+<br>
+<br>
+
+<center>
+<img src="../images/moreplots_dinosequential.gif" width="100%" height="100%"/>
+</center>
+
+
+## Summary Statistics [Datasaurus Dozen](https://github.com/stephlocke/datasauRus)
+
+```{r, echo=FALSE, message=FALSE, results='as.is'}
+library(dplyr)
+library(datasauRus)
+datasaurus_dozen %>%
+  filter(!dataset=="away") %>%
+  group_by(dataset) %>%
+  summarize(`X Mean` = mean(x),
+            `Y Mean` = mean(y),
+            `X SD` = sd(x),
+            `Y SD` = sd(y),
+            Corr. = cor(x, y)
+            ) %>%
+  knitr::kable()
+```
+
+## Visualizing [Datasaurus Dozen](https://github.com/stephlocke/datasauRus)
+
+Datasaurus shows us why visualisation is important, not just summary statistics.
+
+```{r, echo=FALSE, fig.align='center', fig.height=5, fig.width=10}
+library(ggplot2)
+ggplot(datasaurus_dozen[!datasaurus_dozen$dataset=="away", ], aes(x=x, y=y, colour=dataset))+
+  geom_point()+
+  theme_void()+
+  theme(legend.position = "none")+
+  facet_wrap(~dataset, ncol=4)
+```
+
+## Boxplots in Base R: [Perceptions of Probability](https://github.com/mw55309/perceptions)
+
+```{r, echo=FALSE, fig.align='center', message=FALSE, fig.height=6, fig.width=10}
+library(RColorBrewer)
+source("../R/moreplots_perceptions.R")
+```
+
+## Maps: [Where Europe Lives, in 14 lines of code](https://www.r-bloggers.com/where-europe-lives-in-14-lines-of-r-code/)
+
+<blockquote>
+<font size="6">
+- visualization of population density in Europe in 2011, created by Henrik Lindberg <br>
+- parse the latitude/longitude of population centers <br>
+- arrange into a 0.01 by 0.01 degree grid <br>
+- plot each row as a horizontal line with population as the vertical axis <br>
+- grid cells with zero populations cause breaks in the line and leave white gaps
+</blockquote>
+</font>
+
+
+## Maps: [Where Europe Lives, in 14 lines of code](https://www.r-bloggers.com/where-europe-lives-in-14-lines-of-r-code/)
+
+```{r, echo=TRUE, fig.align='center', message=FALSE, fig.height=6, fig.width=6, eval=FALSE}
+library(readr)
+library(tidyr)
+read_csv('../data/moreplots_GEOSTAT_grid_POP_1K_2011_V2_0_1.csv') %>%
+  rbind(read_csv('../data/moreplots_JRC-GHSL_AIT-grid-POP_1K_2011.csv') %>%
+          mutate(TOT_P_CON_DT='')) %>%
+  mutate(lat = as.numeric(gsub('.*N([0-9]+)[EW].*', '\\1', GRD_ID))/100,
+         lng = as.numeric(gsub('.*[EW]([0-9]+)', '\\1', GRD_ID)) *
+           ifelse(gsub('.*([EW]).*', '\\1', GRD_ID) == 'W', -1, 1) / 100) %>%
+  filter(lng > 25, lng < 60) %>%
+  group_by(lat=round(lat, 1), lng=round(lng, 1)) %>%
+  summarize(value = sum(TOT_P, na.rm=TRUE))  %>%
+  ungroup() %>%
+  complete(lat, lng) %>%
+  ggplot(aes(lng, lat + 5*(value/max(value, na.rm=TRUE)))) +
+    geom_line(size=0.4, alpha=0.8, color='#5A3E37', aes(group=lat), na.rm=TRUE) +
+    ggthemes::theme_map() +
+    coord_equal(0.9)
+ggsave('../images/moreplots_europe.png', width=10, height=10)
+```
+
+
+## Maps: [Where Europe Lives, in 14 lines of code](https://www.r-bloggers.com/where-europe-lives-in-14-lines-of-r-code/)
+
+<center>
+<img src="../images/moreplots_europe.png" width="100%" height="100%"/>
+</center>
+
+
+## Interactive ggplots: [plotly](https://github.com/ropensci/plotly)
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.height=5.5, fig.width=10}
+library(plotly)
+set.seed(100)
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+p <- ggplot(data = d, aes(x = carat, y = price)) +
+  geom_point(aes(text = paste("Clarity:", clarity))) +
+  geom_smooth(aes(colour = cut, fill = cut)) + facet_wrap(~ cut)
+
+ggplotly(p)
+```
+
+
+## Interactive ggplots: [plotly](https://github.com/ropensci/plotly)
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.height=5.5, fig.width=10}
+g <- ggplot(faithful, aes(x = eruptions, y = waiting)) +
+  stat_density_2d(aes(fill = ..level..), geom = "polygon") + 
+  xlim(1, 6) + ylim(40, 100)
+ggplotly(g)
+```
+
+
+## Interactive ggplots: [ggiraph](https://github.com/davidgohel/ggiraph) (-> [ggplot2-exts.org](http://www.ggplot2-exts.org/))
+
+```{r estate_table, echo=FALSE, results='as.is'}
+estatedf <- read.table("../data/moreplots_2017-05-03-estate-location.tsv", header = TRUE, sep = "\t")
+knitr::kable(estatedf[1:5, !colnames(estatedf)%in%c("photo", "description", "link")])
+```
+
+```{r estate_str, echo=FALSE}
+str(estatedf)
+```
+
+
+## Interactive ggplots: [ggiraph](https://github.com/davidgohel/ggiraph) (-> [ggplot2-exts.org](http://www.ggplot2-exts.org/))
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.height=5.5, fig.width=10}
+library(ggiraph)
+
+# create an 'onclick' column
+estatedf$onclick <- sprintf("window.open(\"%s\")", estatedf$link)
+estatedf$tooltip <- sprintf("<img src=\"%s\"/>", estatedf$photo)
+
+gg_base <-
+  ggplot(estatedf[estatedf$price < 2000,], aes( x = price, y = size, color = factor(location)) ) +
+  ## scale_colour_hue(h = c(0, 90)) +
+  theme_minimal()
+
+gg_interactive <-
+  gg_base +
+  geom_point_interactive(aes(tooltip = tooltip, onclick = onclick), size = 2)
+
+ggiraph(code = print(gg_interactive), width = 0.8, width_svg = 9) # , zoom_max = 2)
+```
+
+
+## Boxplot Variations: [The Pirate Plot](https://github.com/ndphillips/yarrr/)
+
+<center>
+<img src="../images/moreplots_pirateplot2.png" width="70%" height="70%"/>
+</center>
+
+<blockquote>
+<font size="4">
+- points, symbols representing the raw data (jittered horizontally) <br>
+- bar, a vertical bar showing central tendencies <br> 
+- bean, a smoothed density (inspired by Kampstra and others (2008)) representing a smoothed density <br>
+- inf, a rectangle representing an inference interval (e.g.; Bayesian Highest Density Interval or frequentist confidence interval)
+</font>
+</blockquote>
+
+
+## Boxplot Variations: [The Pirate Plot](https://github.com/ndphillips/yarrr/)
+
+```{r pirate_movie, eval=TRUE, echo=TRUE, message=FALSE, warning=FALSE, fig.height=5.5, fig.width=10}
+library(yarrr)
+png(filename = "../images/moreplots_pirateplot_movie.png", width = 800, height = 450)
+pirateplot(formula = time ~ genre + sequel,
+           data = subset(movies, 
+                         genre %in% c("Action", "Adventure", "Comedy") &
+                         time > 0),
+           main = "Movie running times",
+           theme = 2,
+           gl.col = gray(.7),
+           inf.f.col = piratepal("basel")[1:3],
+           bean.f.o = .1,
+           point.o = .05,
+           avg.line.o = 0
+           )
+dev.off()
+```
+
+
+## Boxplot Variations: [The Pirate Plot](https://github.com/ndphillips/yarrr/)
+
+<center>
+<img src="../images/moreplots_pirateplot_movie.png" width="100%" height="100%"/>
+</center>
+
+
+
