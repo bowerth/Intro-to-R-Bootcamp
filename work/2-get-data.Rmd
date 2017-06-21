@@ -25,14 +25,8 @@ output:
 6. SDMX APIs can be directly accessed from R using Java functions
 7. Provider-specific functions can be created to extract and transform data from non-SDMX REST APIs
 
-<div class="notes">
-This is my *note*.
-
-- It can contain markdown
-- like this list
-- Patricia
-
-</div>
+<!-- <div class="notes"> -->
+<!-- </div> -->
 
 # Built-in Data
 
@@ -101,7 +95,7 @@ Description from the help screen: "This dataset was produced from US economic ti
     - .txt
     - .tsv
 - These delimiters help us know what functions to use to read in the data
-- I'll illustrate with the following files in the R-Bootcamp dowhttp://127.0.0.1:4321/nload file
+- I'll illustrate with the following files in the R-Bootcamp download file
     - `mydata.csv`
     - `mydata.txt`
     - `mydata.tsv`
