@@ -17,10 +17,15 @@ libs <- c("brew",
           "reshape2",
           "scales",
           "tidyr",
-          "xts",
+          "xts"
+          # ,
           # as_seminar_report
           # "rCharts",
           # "RGraphics"
+          # ,
+          # estate example
+          ,
+          "ggiraph"
           )
 
 ## check if all packages in libs are available
@@ -32,10 +37,15 @@ if(length(inst.libs) != 0) {
 }
 
 libs.dev.remote <- c("EDAWR",
+                     "estate",
                      "nsoApi",
-                     "RJSDMX",
-                     ## as_seminar_report
-                     # "ggthemr")
+                     "RJSDMX"
+                     # ,
+                     # "stan"
+                     # ,
+                     # as_seminar_report
+                     # "ggthemr"
+                     )
 
 available.dev <- suppressWarnings(sapply(libs.dev.remote, require, character.only=TRUE))
 inst.libs.dev.remote <- libs.dev.remote[available.dev == FALSE]
@@ -45,9 +55,11 @@ if(length(inst.libs.dev.remote) != 0) {
     set_config(config(ssl_verifypeer = 0L))
     for (lib in inst.libs.dev.remote) {
         if (lib == "EDAWR") install_github("rstudio/EDAWR")
+        if (lib == "estate") install_github("bowerth/estate")
         if (lib == "nsoApi") install_github("bowerth/nsoApi")
         if (lib == "RJSDMX") install_github("amattioc/SDMX", subdir = "RJSDMX")
         if (lib == "ggthemr") install_github("cttobin/ggthemr")
+        # if (lib == "stan") install_github("bowerth/stan")
     }
     detach("package:devtools", unload = TRUE)
 }

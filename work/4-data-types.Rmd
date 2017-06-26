@@ -2,10 +2,10 @@
 title: "R Programming"
 subtitle: "Wait, there are different types of data?"
 author: | 
-  | Bo Werth, FAO
+  | Bo Werth
 output: 
   ioslides_presentation:
-    logo: ../images/oecd_logo2.png
+    logo: ../images/Rlogo.png
     widescreen: true
     smaller: true
     transition: 0.01

@@ -13,6 +13,10 @@ for file in $FILES
 do
 	printf "$SRCDIR/$file $DESTDIR/$file\n" >> $LOGFILE
 	rsync $SRCDIR/$file $DESTDIR/$file
+	ASSETDIR="${file%.*}"
+	if [ -d $SRCDIR/$ASSETDIR ]; then
+      rsync -r $SRCDIR/$ASSETDIR $DESTDIR/
+    fi
 done
 
 # cat $LOGFILE

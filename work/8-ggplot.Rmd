@@ -76,6 +76,9 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 
 ```
 
+<div class="notes">
+See Kuhn, Johnson 2013 - Applied Predictive Modelling: 2.1 Case Study: Predicting Fuel Economy
+</div>
 
 ## Resources Used...
 

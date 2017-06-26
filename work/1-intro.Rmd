@@ -2,10 +2,10 @@
 title: "R Programming"
 subtitle: "An introduction to statistical programming"
 author: | 
-  | Bo Werth, FAO
+  | Bo Werth
 output: 
   ioslides_presentation:
-    logo: ../images/oecd_logo2.png
+    logo: ../images/Rlogo.png
     widescreen: true
     smaller: true
     transition: 0.01
@@ -20,7 +20,7 @@ output:
 - 2005-2009 Economist, East Asia (University Tuebingen)
 - 2010 OECD Statistics Directorate
 - 2011-2015 OECD Directorate for Science, Technology and Innovation
-- 2016 FAO ESS, Methodological Innovations
+- 2016 R4IO ESS, Methodological Innovations
 - Website: <a href="http://rdata.work/">rdata.work</a>
 - GitHub: <a href="http://github.com/SWS-Methodology/">SWS-Methodology</a>, <a href="https://github.com/bowerth">bowerth</a>
 - Email: <a href="mailto:bo.werth@fao.org">bo.werth@fao.org</a>, <a href="mailto:bo.werth@gmail.com">bo.werth@gmail.com</a>

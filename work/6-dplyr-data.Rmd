@@ -2,11 +2,11 @@
 title: "R Programming"
 subtitle: "Transforming & manipulating data made easy."
 author: | 
-  | Bo Werth, FAO
+  | Bo Werth
 date: "August 6, 2016"
 output: 
   ioslides_presentation:
-    logo: ../images/oecd_logo2.png
+    logo: ../images/Rlogo.png
     widescreen: true
     smaller: true
     transition: 0.01
