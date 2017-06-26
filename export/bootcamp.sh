@@ -7,9 +7,10 @@ mkdir $TMPDIR
 
 # add data folder
 cp -r ../data $TMPDIR
+
 # add html slides
-mkdir $TMPDIR/slides
-cp ../files-teacher/*.html $TMPDIR/slides
+# mkdir $TMPDIR/slides
+# cp ../files-teacher/*.html $TMPDIR/slides
 
 # add R scripts
 mkdir $TMPDIR/code-scripts

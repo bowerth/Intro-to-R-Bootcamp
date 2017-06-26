@@ -285,25 +285,31 @@ str(bli_radar)
 
 The existing ggplot2 extension [ggradar](http://www.ggplot2-exts.org/ggradar.html) can be modified. Alternatively, the [plotrix package](https://cran.r-project.org/web/packages/plotrix/index.html) can be tested. More examples can be found [here](http://boot.rdata.work/contrib/radar-example/)
 
-```{r radar-chart, fig.width=9.5, fig.height=4.5, message=FALSE, warning=FALSE, echo=FALSE, cache=TRUE}
+```{r radar-chart-1, message=FALSE, warning=FALSE, echo=TRUE, cache=TRUE}
 p_radar <-
   ggradar(bli_radar,
-        font.radar = "sans",
-        grid.label.size = 4,
-        axis.label.size = 3,
-        group.point.size = 1,
-        group.line.width = 1,
-        plot.extent.x.sf = 1.8) +
+          font.radar = "sans",
+          grid.label.size = 4,
+          axis.label.size = 4,
+          group.point.size = 1,
+          group.line.width = 1,
+          plot.extent.x.sf = 1.8) +
   scale_color_manual(values = c("#8cc841", "#da2128")) +
-  theme(
-    legend.position = c(0.05, 0.95),
-    legend.justification = "left",
-    legend.direction = "horizontal",
-    legend.text = element_text(size = 8),
-    legend.background = element_rect(fill = NULL)
-  )
+theme(
+  legend.position = c(0.05, 0.95),
+  legend.justification = "left",
+  legend.direction = "horizontal",
+  legend.text = element_text(size = 8),
+  legend.background = element_rect(fill = NULL)
+)
+```
+
+---
+
+## Radar Plot
+
+```{r radar-chart-2, fig.width=11.5, fig.height=5.5, message=FALSE, warning=FALSE, echo=FALSE, cache=FALSE}
 p_radar
 ## plotly::ggplotly(p_radar)
-
 ```
 
