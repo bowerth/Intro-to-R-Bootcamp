@@ -39,13 +39,17 @@ library(ggradar)
 suppressPackageStartupMessages(library(dplyr))
 library(scales)
 
-library(ggiraph)
-library(ggiraphExtra)
+## library(ggiraph)
+## library(ggiraphExtra)
+library(hrbrthemes)
+library(gcookbook)
 
 library(knitr)
 opts_chunk$set(digits = 3, tidy = FALSE,
                fig.path = '10-ggplot-detailed-features/fig-html/',
                fig.height = 3.5, fig.width = 10, dev = "svg")
+
+source("../R/ggplot_detailed_features_absLegend.R")
 ```
 
 
@@ -64,11 +68,8 @@ gp.new = gtable::gtable_add_grob(gp, leg, t = 4, l = 4)
 ```
 
 ```{r legend-width-eval, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
-source("../R/ggplot_detailed_features_absLegend.R")
 source("../R/ggplot_detailed_features_preparePlot.R")
-gp1 <- absLegend(p1)
-grid.newpage()
-grid.draw(gp1)
+gp1 <- absLegend(p1); grid.newpage(); grid.draw(gp1)
 ```
 
 ---
@@ -78,10 +79,11 @@ grid.draw(gp1)
  It is possible to specify the `legend.key` height and width separately for each guide (colour, linetype etc.), see [guide_legend.html](http://ggplot2.tidyverse.org/reference/guide_legend.html)
 
 ```{r key-size, tidy=FALSE, echo=TRUE, message=FALSE, warning=FALSE, cache=TRUE}
-p1 + guides(fill = guide_legend(keywidth = unit(10, "mm"),
+p2 <- p1 + guides(fill = guide_legend(keywidth = unit(10, "mm"),
                                 keyheight = unit(10, "mm"), title = "",
                                 override.aes = list(color = "black")),
             linetype = guide_legend(keywidth = unit(20, "mm"), title = ""))
+gp2 <- absLegend(p2); grid.newpage(); grid.draw(gp2)
 ```
 
 ---
@@ -91,9 +93,10 @@ p1 + guides(fill = guide_legend(keywidth = unit(10, "mm"),
 The y-axis title position can be modified in the theme using the parameters of `element_text`, see [theme elements](http://ggplot2.tidyverse.org/reference/element.html)
 
 ```{r axis-title-position, tidy=FALSE, echo=TRUE, message=FALSE, warning=FALSE, cache=TRUE}
-p1 + scale_y_continuous(name = "This is the y-axis title") +
+p2 <- p1 + scale_y_continuous(name = "%") +
   theme(axis.title.y = element_text(vjust = 1.08, angle = 0,
-                                    margin = margin(r = -75, unit = "pt")))
+                                    margin = margin(r = -10, unit = "pt")))
+gp2 <- absLegend(p2); grid.newpage(); grid.draw(gp2)
 ```
 
 ---
@@ -130,16 +133,16 @@ mtcars %>% select(mpg, hp) %>% mutate(hp_scaled = hp / 10) %>% summary()
 Plot on separate axes, manual axis title and legend labels
 
 ```{r rescale-mtcars, cache=TRUE}
-scalefactor <- 10^1
-mtcars %>%
-  mutate(hp_scaled = hp / scalefactor) %>%
-  select(cyl, mpg, hp_scaled) %>%
-  gather(key = variable, value = value, -cyl) %>%
-  ggplot(aes(x=cyl, y = value, color = variable)) +
-  geom_point() +
-  scale_y_continuous(name = "mpg",
-                     sec.axis = sec_axis(name="hp", ~.*scalefactor)) +
-  scale_color_discrete(labels = c("hp", "mpg"))
+scalefactor <- 10^1; p1 <- mtcars %>% mutate(hp_scaled = hp / scalefactor) %>%
+  select(cyl, mpg, hp_scaled) %>% gather(key = variable, value = value, -cyl) %>%
+  ggplot(aes(x=cyl, y = value, color = variable)) + geom_point() +
+  scale_y_continuous(name = "mpg", sec.axis = sec_axis(name="hp", ~.*scalefactor)) +
+  scale_color_discrete(labels = c("hp", "mpg")) +
+  guides(color = guide_legend(title = NULL)) +
+theme(legend.position = "top", legend.background = element_rect(fill = FALSE, color = FALSE),
+      legend.margin = margin(0.5, 0, 0.5, 0, unit = "mm"), # trbl
+      legend.key = element_rect(color = FALSE, fill = FALSE))
+grid.newpage(); p1 %>% absLegend() %>% grid.draw()
 ```
 
 ---
@@ -313,3 +316,28 @@ p_radar
 ## plotly::ggplotly(p_radar)
 ```
 
+---
+class: inverse, center, middle
+
+# hrbrthemes
+
+https://github.com/hrbrmstr/hrbrthemes
+
+---
+
+```{r hrbrthemes-example-area, fig.height=5, warning=FALSE, echo=TRUE}
+ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) + geom_area() +
+  scale_fill_ipsum() + scale_x_continuous(expand=c(0,0)) + scale_y_comma() +
+  labs(title="Age distribution of population in the U.S., 1900-2002",
+       subtitle="Example data from the R Graphics Cookbook",
+       caption="Source: R Graphics Cookbook") +
+  theme_ipsum_rc(grid="XY") + theme(legend.position="right") +
+  theme(axis.text.x=element_text(hjust=c(0, 0.5, 0.5, 0.5, 1)))
+
+```
+
+---
+
+```{r sys-info, echo=FALSE}
+sessionInfo()
+```
